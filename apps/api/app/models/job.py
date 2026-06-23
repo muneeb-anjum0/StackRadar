@@ -16,6 +16,8 @@ class RawJob(Base):
     raw_location: Mapped[str | None] = mapped_column(String(255))
     raw_description: Mapped[str | None] = mapped_column(Text)
     raw_salary: Mapped[str | None] = mapped_column(String(120))
+    job_url: Mapped[str | None] = mapped_column(String(500))
+    posted_at: Mapped[datetime | None] = mapped_column(DateTime)
     raw_json: Mapped[dict | None] = mapped_column(JSON)
     collected_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 

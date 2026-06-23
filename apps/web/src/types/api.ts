@@ -11,10 +11,28 @@ export type Overview = {
   data_quality_score: number;
 };
 
+export type SourceItem = {
+  source: string;
+  raw_jobs: number;
+  clean_jobs: number;
+  last_collected_at: string | null;
+  missing_salary_count: number;
+};
+
+export type SourceSummary = {
+  total_sources: number;
+  total_raw_jobs: number;
+  total_clean_jobs: number;
+  last_collected_at: string | null;
+  mode: string;
+  sources: SourceItem[];
+};
+
 export type Skill = { id: number; name: string; category: string };
 
 export type Job = {
   id: number;
+  source: string;
   normalized_title: string;
   normalized_role: string;
   company: string | null;
@@ -25,6 +43,8 @@ export type Job = {
   salary_min: number | null;
   salary_max: number | null;
   currency: string | null;
+  posted_at: string | null;
+  collected_at: string | null;
   job_url: string | null;
   created_at: string;
   skills: Skill[];

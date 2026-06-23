@@ -37,6 +37,23 @@ class SkillTrendOut(BaseModel):
     job_count: int
 
 
+class SourceItem(BaseModel):
+    source: str
+    raw_jobs: int
+    clean_jobs: int
+    last_collected_at: str | None
+    missing_salary_count: int
+
+
+class SourceSummaryOut(BaseModel):
+    total_sources: int
+    total_raw_jobs: int
+    total_clean_jobs: int
+    last_collected_at: str | None
+    mode: str
+    sources: list[SourceItem]
+
+
 class SkillGapRequest(BaseModel):
     target_role: str
     current_skills: list[str]

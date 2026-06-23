@@ -21,9 +21,10 @@ def search(
     skill: str | None = None,
     work_mode: str | None = None,
     seniority: str | None = None,
+    source: str | None = None,
     db: Session = Depends(get_db),
 ):
-    total, rows = search_jobs(db, query=query, role=role, skill=skill, work_mode=work_mode, seniority=seniority)
+    total, rows = search_jobs(db, query=query, role=role, skill=skill, work_mode=work_mode, seniority=seniority, source=source)
     return JobSearchResponse(total=total, jobs=rows)
 
 

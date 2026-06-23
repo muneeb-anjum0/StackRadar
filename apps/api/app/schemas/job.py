@@ -12,6 +12,7 @@ class SkillOut(BaseModel):
 
 class JobOut(BaseModel):
     id: int
+    source: str
     normalized_title: str
     normalized_role: str
     company: str | None
@@ -22,6 +23,8 @@ class JobOut(BaseModel):
     salary_min: float | None
     salary_max: float | None
     currency: str | None
+    posted_at: datetime | None
+    collected_at: datetime | None
     job_url: str | None
     created_at: datetime
     skills: list[SkillOut]

@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.core.db import get_db
-from app.schemas.analytics import CountItem, OverviewOut, RoleAnalyticsOut, SkillGapRequest, SkillGapResponse, SkillTrendOut
-from app.services.analytics_service import distribution, overview, role_analytics, skill_gap, skill_trends, top_roles, top_skills
+from app.schemas.analytics import CountItem, OverviewOut, RoleAnalyticsOut, SkillGapRequest, SkillGapResponse, SkillTrendOut, SourceSummaryOut
+from app.services.analytics_service import distribution, overview, role_analytics, skill_gap, skill_trends, source_summary, top_roles, top_skills
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 
@@ -41,6 +41,11 @@ def get_role(role: str, db: Session = Depends(get_db)):
 @router.get("/skill-trends", response_model=list[SkillTrendOut])
 def get_skill_trends(db: Session = Depends(get_db)):
     return skill_trends(db)
+
+
+@router.get("/sources", response_model=SourceSummaryOut)
+def get_sources(db: Session = Depends(get_db)):
+    return source_summary(db)
 
 
 @router.post("/skill-gap", response_model=SkillGapResponse)

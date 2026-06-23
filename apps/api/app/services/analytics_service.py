@@ -3,9 +3,9 @@ from sqlalchemy import case, distinct, func, select
 from sqlalchemy.orm import Session
 
 from app.models.analytics import DataQualityRun, DailySkillTrend
-from app.models.job import CleanJob
+from app.models.job import CleanJob, RawJob
 from app.models.skill import JobSkill, Skill
-from app.schemas.analytics import CountItem, OverviewOut, RoleAnalyticsOut, SkillGapResponse, SkillTrendOut
+from app.schemas.analytics import CountItem, OverviewOut, RoleAnalyticsOut, SkillGapResponse, SkillTrendOut, SourceItem, SourceSummaryOut
 
 
 def _percentage(count: int, total: int) -> float:
@@ -117,6 +117,41 @@ def skill_trends(db: Session) -> list[SkillTrendOut]:
         SkillTrendOut(date=row[0].isoformat(), skill=row[1], role=row[2], location=row[3], job_count=row[4])
         for row in rows
     ]
+
+
+def source_summary(db: Session) -> SourceSummaryOut:
+    rows = db.execute(
+        select(
+            RawJob.source,
+            func.count(RawJob.id),
+            func.count(CleanJob.id),
+            func.max(RawJob.collected_at),
+            func.sum(case((RawJob.raw_salary.is_(None), 1), else_=0)),
+        )
+        .outerjoin(CleanJob, CleanJob.raw_job_id == RawJob.id)
+        .group_by(RawJob.source)
+        .order_by(RawJob.source)
+    ).all()
+    items = [
+        SourceItem(
+            source=row[0],
+            raw_jobs=row[1],
+            clean_jobs=row[2],
+            last_collected_at=row[3].isoformat() if row[3] else None,
+            missing_salary_count=row[4] or 0,
+        )
+        for row in rows
+    ]
+    last_collected = max((item.last_collected_at for item in items if item.last_collected_at), default=None)
+    live_sources = {item.source for item in items if item.source not in {"sample", "sample_board"}}
+    return SourceSummaryOut(
+        total_sources=len(items),
+        total_raw_jobs=sum(item.raw_jobs for item in items),
+        total_clean_jobs=sum(item.clean_jobs for item in items),
+        last_collected_at=last_collected,
+        mode="live/API-backed" if live_sources else "sample-only",
+        sources=items,
+    )
 
 
 def skill_gap(db: Session, target_role: str, current_skills: list[str]) -> SkillGapResponse:

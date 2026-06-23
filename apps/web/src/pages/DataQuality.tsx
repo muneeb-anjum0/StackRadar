@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { QualityCard } from "../components/cards/QualityCard";
-import { PageHeader } from "../components/layout/PageHeader";
+import { InsightNote, InsightRail } from "../components/workspace/InsightRail";
+import { ModuleCard } from "../components/workspace/ModuleCard";
+import { PageFrame } from "../components/workspace/PageFrame";
+import { StatPill } from "../components/workspace/Pills";
+import { WorkspaceHeader } from "../components/workspace/WorkspaceHeader";
 import { api } from "../lib/api";
 import { QualityIssue, QualitySummary } from "../types/api";
 
@@ -10,17 +14,35 @@ export function DataQuality() {
   const data = summary.data;
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        title="Data Quality Monitor"
-        subtitle="Track duplicate handling, missing fields, salary coverage and skill extraction quality after each pipeline run."
-        chip="Latest run"
+    <PageFrame
+      rail={
+        data && (
+          <InsightRail title="Pipeline signals">
+            <InsightNote label="Quality" value={`${data.quality_score}% quality score after the latest cleaning run.`} />
+            <InsightNote label="Deduplication" value={`${data.duplicate_count} duplicate postings were removed.`} />
+            <InsightNote label="Coverage" value={`${data.total_clean_jobs} clean jobs are ready for analytics.`} />
+          </InsightRail>
+        )
+      }
+    >
+      <WorkspaceHeader
+        label="Pipeline health"
+        title="Data quality as an engineering signal"
+        subtitle="Inspect raw-to-clean coverage, duplicate handling, missing fields and validation notes from the local pipeline."
+        meta="Latest run"
       />
       {data && (
         <>
-          <section className="glass rounded-2xl p-6">
-            <p className="text-sm text-slate-500">Latest quality score</p>
-            <p className="mt-4 text-5xl font-semibold text-slate-950">{data.quality_score}%</p>
+          <section className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-400">Quality score hero</p>
+            <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <p className="text-6xl font-semibold text-slate-950">{data.quality_score}%</p>
+              <div className="flex flex-wrap gap-2">
+                <StatPill label="Raw" value={data.total_raw_jobs} />
+                <StatPill label="Clean" value={data.total_clean_jobs} />
+                <StatPill label="Duplicates" value={data.duplicate_count} />
+              </div>
+            </div>
           </section>
           <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-6">
             <QualityCard label="Raw jobs" value={data.total_raw_jobs} />
@@ -32,17 +54,29 @@ export function DataQuality() {
           </div>
         </>
       )}
-      <div className="grid gap-4 md:grid-cols-2">
-        {(issues.data ?? []).map((issue) => (
-          <div key={issue.title} className="glass rounded-2xl p-5">
-            <div className="flex items-center justify-between">
-              <h3 className="font-medium text-slate-900">{issue.title}</h3>
-              <span className="text-sm text-slate-500">{issue.count}</span>
-            </div>
-            <p className="mt-2 text-sm leading-6 text-slate-500">{issue.description}</p>
+      <div className="grid gap-5 md:grid-cols-2">
+        <ModuleCard title="Issue Breakdown" eyebrow="Validation">
+          <div className="space-y-3">
+            {(issues.data ?? []).map((issue) => (
+              <div key={issue.title} className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-medium text-slate-900">{issue.title}</h3>
+                  <span className="text-sm font-medium text-slate-500">{issue.count}</span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-slate-500">{issue.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </ModuleCard>
+        <ModuleCard title="Pipeline Health Log" eyebrow="Run notes">
+          <div className="space-y-3 text-sm leading-6 text-slate-600">
+            <p>Raw records are preserved separately from cleaned records.</p>
+            <p>Duplicate handling uses source IDs and content fingerprints.</p>
+            <p>Skill extraction coverage is tracked as a quality signal.</p>
+            <p>Salary parsing gaps are visible instead of hidden.</p>
+          </div>
+        </ModuleCard>
       </div>
-    </div>
+    </PageFrame>
   );
 }

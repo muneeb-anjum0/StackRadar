@@ -47,8 +47,8 @@ def clean_raw_jobs(db: Session) -> dict[str, int]:
             salary_min=salary["salary_min"],
             salary_max=salary["salary_max"],
             currency=salary["currency"],
-            posted_at=None,
-            job_url=(raw.raw_json or {}).get("job_url"),
+            posted_at=raw.posted_at,
+            job_url=raw.job_url or (raw.raw_json or {}).get("job_url"),
             description_hash=description_hash(raw.raw_description),
             created_at=datetime.utcnow(),
         )

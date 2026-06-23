@@ -30,13 +30,15 @@ def seed_raw_jobs() -> None:
         for record in records:
             db.add(
                 RawJob(
-                    source=record["source"],
+                    source="sample",
                     source_job_id=record.get("source_job_id"),
                     raw_title=record.get("title"),
                     raw_company=record.get("company"),
                     raw_location=record.get("location"),
                     raw_description=record.get("description"),
                     raw_salary=record.get("salary"),
+                    job_url=record.get("job_url"),
+                    posted_at=None,
                     raw_json=record,
                 )
             )

@@ -8,3 +8,8 @@ export function salary(min?: number | null, max?: number | null, currency?: stri
   const prefix = currency ? `${currency} ` : "";
   return `${prefix}${compactNumber(min)} - ${compactNumber(max)}`;
 }
+
+export function shortDate(value?: string | null): string {
+  if (!value) return "N/A";
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(value));
+}

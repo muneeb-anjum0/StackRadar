@@ -13,18 +13,19 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 - FastAPI backend with SQLAlchemy and Pydantic schemas
 - PostgreSQL storage for raw jobs, clean jobs, skills, analytics and quality runs
 - Messy sample dataset with 105 realistic postings
+- Live API collectors for Remotive and Adzuna
 - Cleaning pipeline for titles, roles, seniority, work mode, location and salary
 - Dictionary-based skill extraction with normalized aliases
 - Duplicate detection using source IDs and content fingerprints
 - Analytics endpoints for overview, skills, roles, trends and skill gaps
-- Dark SaaS-style React dashboard with Tailwind, Recharts, Framer Motion and TanStack Query
+- Career intelligence workspace with source freshness, source filters and API-backed analytics
 - Docker Compose local setup with Postgres, Redis, API and web app
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  A["sample_jobs.json"] --> B["Raw job loader"]
+  A["sample_jobs.json / live APIs"] --> B["Raw job loader"]
   B --> C[("raw_jobs")]
   C --> D["Cleaning pipeline"]
   D --> E[("clean_jobs")]
@@ -57,7 +58,7 @@ Start services from the repository root:
 docker compose -f infra/docker-compose.yml up --build
 ```
 
-Seed data after Postgres is running:
+Seed repeatable demo data after Postgres is running:
 
 ```bash
 bash scripts/seed.sh
@@ -68,6 +69,20 @@ Windows PowerShell equivalent:
 ```powershell
 .\scripts\seed.ps1
 ```
+
+Collect live API data:
+
+```bash
+bash scripts/collect-live.sh
+```
+
+PowerShell:
+
+```powershell
+.\scripts\collect-live.ps1
+```
+
+By default this fetches Remotive and Adzuna. Remotive needs no key. Adzuna is skipped unless `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` are set.
 
 Open:
 
@@ -105,6 +120,7 @@ The repository follows the requested `apps`, `pipelines`, `infra`, `docs` and `s
 - `GET /analytics/seniority`
 - `GET /analytics/role/{role}`
 - `GET /analytics/skill-trends`
+- `GET /analytics/sources`
 - `POST /analytics/skill-gap`
 - `GET /quality/summary`
 - `GET /quality/issues`
@@ -120,7 +136,35 @@ The repository follows the requested `apps`, `pipelines`, `infra`, `docs` and `s
 
 ## Cleaning Rules
 
-StackRadar normalizes role titles, detects seniority and work mode from titles/descriptions, parses basic city/country values, parses common PKR/USD salary formats, extracts skills through aliases and removes duplicates before analytics are built.
+StackRadar normalizes role titles, detects seniority and work mode from titles/descriptions, parses basic city/country values, parses common salary formats, extracts skills through aliases and removes duplicates before analytics are built.
+
+## Data Sources
+
+Demo mode uses `pipelines/collectors/sample_jobs.json` and stores jobs as source `sample`.
+
+Live mode supports:
+
+- Remotive API: no API key required, source `remotive`.
+- Adzuna API: requires `ADZUNA_APP_ID` and `ADZUNA_APP_KEY`, source `adzuna`.
+
+Set optional environment values in `infra/.env.example`:
+
+```bash
+ADZUNA_APP_ID=
+ADZUNA_APP_KEY=
+ADZUNA_COUNTRY=gb
+DEFAULT_JOB_QUERY=software developer
+LIVE_COLLECT_LIMIT=1000
+```
+
+Remotive jobs should link back to their source URL if displayed publicly.
+
+Troubleshooting:
+
+- Missing Adzuna keys: expected; Adzuna will be skipped and Remotive can still collect.
+- API request failed: retry with a smaller limit or broader query.
+- No jobs inserted: likely duplicate source IDs already exist.
+- Need a clean run: reset the DB, restart Docker, then run `scripts/seed.sh` or `scripts/collect-live.sh`.
 
 ## Screenshots
 

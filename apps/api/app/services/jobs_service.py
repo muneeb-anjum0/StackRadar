@@ -1,7 +1,7 @@
 from sqlalchemy import Select, func, or_, select
 from sqlalchemy.orm import Session, selectinload
 
-from app.models.job import CleanJob
+from app.models.job import CleanJob, RawJob
 from app.models.skill import JobSkill, Skill
 from app.schemas.job import JobDetail, JobOut, SkillOut
 
@@ -13,6 +13,7 @@ def _skill_out(job_skill: JobSkill) -> SkillOut:
 def to_job_out(job: CleanJob) -> JobOut:
     return JobOut(
         id=job.id,
+        source=job.raw_job.source,
         normalized_title=job.normalized_title,
         normalized_role=job.normalized_role,
         company=job.company,
@@ -23,6 +24,8 @@ def to_job_out(job: CleanJob) -> JobOut:
         salary_min=job.salary_min,
         salary_max=job.salary_max,
         currency=job.currency,
+        posted_at=job.posted_at,
+        collected_at=job.raw_job.collected_at,
         job_url=job.job_url,
         created_at=job.created_at,
         skills=[_skill_out(item) for item in job.skills],
@@ -62,6 +65,7 @@ def search_jobs(
     skill: str | None = None,
     work_mode: str | None = None,
     seniority: str | None = None,
+    source: str | None = None,
     limit: int = 50,
 ) -> tuple[int, list[JobOut]]:
     stmt: Select = select(CleanJob).options(
@@ -76,6 +80,8 @@ def search_jobs(
         stmt = stmt.where(CleanJob.work_mode == work_mode)
     if seniority:
         stmt = stmt.where(CleanJob.seniority == seniority)
+    if source:
+        stmt = stmt.join(RawJob, RawJob.id == CleanJob.raw_job_id).where(func.lower(RawJob.source) == source.lower())
     if query:
         like = f"%{query.lower()}%"
         stmt = stmt.where(

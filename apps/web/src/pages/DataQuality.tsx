@@ -6,11 +6,12 @@ import { PageFrame } from "../components/workspace/PageFrame";
 import { StatPill } from "../components/workspace/Pills";
 import { WorkspaceHeader } from "../components/workspace/WorkspaceHeader";
 import { api } from "../lib/api";
-import { QualityIssue, QualitySummary } from "../types/api";
+import { QualityIssue, QualitySummary, SourceSummary } from "../types/api";
 
 export function DataQuality() {
   const summary = useQuery({ queryKey: ["quality-summary"], queryFn: () => api.get<QualitySummary>("/quality/summary") });
   const issues = useQuery({ queryKey: ["quality-issues"], queryFn: () => api.get<QualityIssue[]>("/quality/issues") });
+  const sources = useQuery({ queryKey: ["sources"], queryFn: () => api.get<SourceSummary>("/analytics/sources") });
   const data = summary.data;
 
   return (
@@ -55,6 +56,20 @@ export function DataQuality() {
         </>
       )}
       <div className="grid gap-5 md:grid-cols-2">
+        <ModuleCard title="Source Health" eyebrow="Collectors">
+          <div className="space-y-3">
+            {(sources.data?.sources ?? []).map((source) => (
+              <div key={source.source} className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-medium text-slate-900">{source.source}</h3>
+                  <span className="text-xs text-slate-500">{source.clean_jobs} clean</span>
+                </div>
+                <p className="mt-2 text-sm text-slate-500">{source.raw_jobs} raw jobs / {source.missing_salary_count} missing salary</p>
+                <p className="mt-1 text-xs text-slate-400">Last collected: {source.last_collected_at ? new Date(source.last_collected_at).toLocaleString() : "N/A"}</p>
+              </div>
+            ))}
+          </div>
+        </ModuleCard>
         <ModuleCard title="Issue Breakdown" eyebrow="Validation">
           <div className="space-y-3">
             {(issues.data ?? []).map((issue) => (
@@ -68,6 +83,8 @@ export function DataQuality() {
             ))}
           </div>
         </ModuleCard>
+      </div>
+      <div className="grid gap-5 md:grid-cols-1">
         <ModuleCard title="Pipeline Health Log" eyebrow="Run notes">
           <div className="space-y-3 text-sm leading-6 text-slate-600">
             <p>Raw records are preserved separately from cleaned records.</p>

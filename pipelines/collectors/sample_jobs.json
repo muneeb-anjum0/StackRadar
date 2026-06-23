@@ -1,0 +1,1052 @@
+[
+  {
+    "source": "sample_board",
+    "source_job_id": "job-000",
+    "title": "Jr Backend Dev",
+    "company": "Systems Ltd",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-000"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-001",
+    "title": "Backend Engineer",
+    "company": "Techlogix",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-001"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-002",
+    "title": "Node.js Developer",
+    "company": "VentureDive",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-002"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-003",
+    "title": "MERN Ninja",
+    "company": "Remote startup",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-003"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-004",
+    "title": "Fullstack JS Engineer",
+    "company": "Arbisoft",
+    "location": "USA",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-004"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-005",
+    "title": "React Front-End Developer",
+    "company": "Confiz",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-005"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-006",
+    "title": "Frontend Developer",
+    "company": "Educative",
+    "location": "UK",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-006"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-007",
+    "title": "Python Data Analyst",
+    "company": "Systems Limited",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-007"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-008",
+    "title": "Data Scientist",
+    "company": "10Pearls",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-008"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-009",
+    "title": "Associate AI Engineer",
+    "company": "Folio3",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-009"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-010",
+    "title": "DevOps Engineer",
+    "company": "Systems Ltd",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-010"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-011",
+    "title": ".NET Developer",
+    "company": "Techlogix",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-011"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-012",
+    "title": "Mobile App Developer",
+    "company": "VentureDive",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-012"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-013",
+    "title": "QA Engineer",
+    "company": "Remote startup",
+    "location": "Remote",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-013"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-014",
+    "title": "Entry Level Software Engineer",
+    "company": "Arbisoft",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-014"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-015",
+    "title": "Jr Backend Dev",
+    "company": "Confiz",
+    "location": "USA",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-015"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-016",
+    "title": "Backend Engineer",
+    "company": "Educative",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-016"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-017",
+    "title": "Node.js Developer",
+    "company": "Systems Limited",
+    "location": "UK",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-017"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-018",
+    "title": "MERN Ninja",
+    "company": "10Pearls",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-018"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-019",
+    "title": "Fullstack JS Engineer",
+    "company": "Folio3",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-019"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-020",
+    "title": "React Front-End Developer",
+    "company": "Systems Ltd",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-020"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-021",
+    "title": "Frontend Developer",
+    "company": "Techlogix",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-021"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-021",
+    "title": "Frontend Developer",
+    "company": "Techlogix",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-021"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-023",
+    "title": "Data Scientist",
+    "company": "Remote startup",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-023"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-024",
+    "title": "Associate AI Engineer",
+    "company": "Arbisoft",
+    "location": "Remote",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-024"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-025",
+    "title": "DevOps Engineer",
+    "company": "Confiz",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-025"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-026",
+    "title": ".NET Developer",
+    "company": "Educative",
+    "location": "USA",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-026"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-027",
+    "title": "Mobile App Developer",
+    "company": "Systems Limited",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-027"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-028",
+    "title": "QA Engineer",
+    "company": "10Pearls",
+    "location": "UK",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-028"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-029",
+    "title": "Entry Level Software Engineer",
+    "company": "Folio3",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-029"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-030",
+    "title": "Jr Backend Dev",
+    "company": "Systems Ltd",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-030"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-031",
+    "title": "Backend Engineer",
+    "company": "Techlogix",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-031"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-032",
+    "title": "Node.js Developer",
+    "company": "VentureDive",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-032"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-033",
+    "title": "MERN Ninja",
+    "company": "Remote startup",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-033"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-034",
+    "title": "Fullstack JS Engineer",
+    "company": "Arbisoft",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-034"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-035",
+    "title": "React Front-End Developer",
+    "company": "Confiz",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-035"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-036",
+    "title": "Frontend Developer",
+    "company": "Educative",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-036"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-037",
+    "title": "Python Data Analyst",
+    "company": "Systems Limited",
+    "location": "USA",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-037"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-038",
+    "title": "Data Scientist",
+    "company": "10Pearls",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-038"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-039",
+    "title": "Associate AI Engineer",
+    "company": "Folio3",
+    "location": "UK",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-039"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-040",
+    "title": "DevOps Engineer",
+    "company": "Systems Ltd",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-040"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-041",
+    "title": ".NET Developer",
+    "company": "Techlogix",
+    "location": "UAE",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-041"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-042",
+    "title": "Mobile App Developer",
+    "company": "VentureDive",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-042"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-043",
+    "title": "QA Engineer",
+    "company": "Remote startup",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-043"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-044",
+    "title": "Entry Level Software Engineer",
+    "company": "Arbisoft",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-044"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-045",
+    "title": "Jr Backend Dev",
+    "company": "Confiz",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-045"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-046",
+    "title": "Backend Engineer",
+    "company": "Educative",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-046"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-046",
+    "title": "Backend Engineer",
+    "company": "Educative",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-046"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-048",
+    "title": "MERN Ninja",
+    "company": "10Pearls",
+    "location": "USA",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-048"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-049",
+    "title": "Fullstack JS Engineer",
+    "company": "Folio3",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-049"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-050",
+    "title": "React Front-End Developer",
+    "company": "Systems Ltd",
+    "location": "UK",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-050"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-051",
+    "title": "Frontend Developer",
+    "company": "Techlogix",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-051"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-052",
+    "title": "Python Data Analyst",
+    "company": "VentureDive",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-052"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-053",
+    "title": "Data Scientist",
+    "company": "Remote startup",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-053"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-054",
+    "title": "Associate AI Engineer",
+    "company": "Arbisoft",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-054"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-055",
+    "title": "DevOps Engineer",
+    "company": "Confiz",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-055"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-056",
+    "title": ".NET Developer",
+    "company": "Educative",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-056"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-057",
+    "title": "Mobile App Developer",
+    "company": "Systems Limited",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-057"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-058",
+    "title": "QA Engineer",
+    "company": "10Pearls",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-058"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-059",
+    "title": "Entry Level Software Engineer",
+    "company": "Folio3",
+    "location": "USA",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-059"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-060",
+    "title": "Jr Backend Dev",
+    "company": "Systems Ltd",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-060"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-061",
+    "title": "Backend Engineer",
+    "company": "Techlogix",
+    "location": "UK",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-061"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-062",
+    "title": "Node.js Developer",
+    "company": "VentureDive",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-062"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-063",
+    "title": "MERN Ninja",
+    "company": "Remote startup",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-063"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-064",
+    "title": "Fullstack JS Engineer",
+    "company": "Arbisoft",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-064"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-065",
+    "title": "React Front-End Developer",
+    "company": "Confiz",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-065"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-066",
+    "title": "Frontend Developer",
+    "company": "Educative",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-066"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-067",
+    "title": "Python Data Analyst",
+    "company": "Systems Limited",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-067"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-068",
+    "title": "Data Scientist",
+    "company": "10Pearls",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-068"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-069",
+    "title": "Associate AI Engineer",
+    "company": "Folio3",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-069"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-070",
+    "title": "DevOps Engineer",
+    "company": "Systems Ltd",
+    "location": "USA",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-070"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-071",
+    "title": ".NET Developer",
+    "company": "Techlogix",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-071"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-072",
+    "title": "Mobile App Developer",
+    "company": "VentureDive",
+    "location": "UK",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-072"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-073",
+    "title": "QA Engineer",
+    "company": "Remote startup",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-073"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-074",
+    "title": "Entry Level Software Engineer",
+    "company": "Arbisoft",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-074"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-075",
+    "title": "Jr Backend Dev",
+    "company": "Confiz",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-075"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-076",
+    "title": "Backend Engineer",
+    "company": "Educative",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-076"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-077",
+    "title": "Node.js Developer",
+    "company": "Systems Limited",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-077"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-078",
+    "title": "MERN Ninja",
+    "company": "10Pearls",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-078"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-079",
+    "title": "Fullstack JS Engineer",
+    "company": "Folio3",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-079"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-080",
+    "title": "React Front-End Developer",
+    "company": "Systems Ltd",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-080"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-081",
+    "title": "Frontend Developer",
+    "company": "Techlogix",
+    "location": "USA",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-081"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-082",
+    "title": "Python Data Analyst",
+    "company": "VentureDive",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-082"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-083",
+    "title": "Data Scientist",
+    "company": "Remote startup",
+    "location": "UK",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-083"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-084",
+    "title": "Associate AI Engineer",
+    "company": "Arbisoft",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-084"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-085",
+    "title": "DevOps Engineer",
+    "company": "Confiz",
+    "location": "UAE",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-085"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-086",
+    "title": ".NET Developer",
+    "company": "Educative",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-086"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-087",
+    "title": "Mobile App Developer",
+    "company": "Systems Limited",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-087"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-087",
+    "title": "Mobile App Developer",
+    "company": "Systems Limited",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-087"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-089",
+    "title": "Entry Level Software Engineer",
+    "company": "Folio3",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-089"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-090",
+    "title": "Jr Backend Dev",
+    "company": "Systems Ltd",
+    "location": "Remote",
+    "description": "Join a product engineering team as a Backend Developer. Work with Python, FastAPI, PostgreSQL, Docker and support REST APIs, Git. junior team. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-090"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-091",
+    "title": "Backend Engineer",
+    "company": "Techlogix",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Backend Developer. Work with Node.js, Express.js, MongoDB, Redis and support REST APIs, Linux. entry level role. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-091"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-092",
+    "title": "Node.js Developer",
+    "company": "VentureDive",
+    "location": "USA",
+    "description": "Join a product engineering team as a Backend Developer. Work with JavaScript, Node.js, Express.js, PostgreSQL and support Docker, CI/CD. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-092"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-093",
+    "title": "MERN Ninja",
+    "company": "Remote startup",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, Node.js, Express.js, MongoDB and support JavaScript, Git. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-093"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-094",
+    "title": "Fullstack JS Engineer",
+    "company": "Arbisoft",
+    "location": "UK",
+    "description": "Join a product engineering team as a Full Stack Developer. Work with React, TypeScript, Node.js, GraphQL and support PostgreSQL, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-094"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-095",
+    "title": "React Front-End Developer",
+    "company": "Confiz",
+    "location": "Lahore",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, TypeScript, JavaScript, Testing and support Git. junior team. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "200k+",
+    "job_url": "https://jobs.example.local/job-095"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-096",
+    "title": "Frontend Developer",
+    "company": "Educative",
+    "location": "UAE",
+    "description": "Join a product engineering team as a Frontend Developer. Work with React, JavaScript, TypeScript, REST APIs and support Testing. entry level role. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "1.5 lac",
+    "job_url": "https://jobs.example.local/job-096"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-097",
+    "title": "Python Data Analyst",
+    "company": "Systems Limited",
+    "location": "Rawalpindi",
+    "description": "Join a product engineering team as a Data Analyst. Work with Python, SQL, Pandas, Excel and support Power BI, PostgreSQL. 2+ years preferred. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 90k - 140k",
+    "job_url": "https://jobs.example.local/job-097"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-098",
+    "title": "Data Scientist",
+    "company": "10Pearls",
+    "location": "Pakistan",
+    "description": "Join a product engineering team as a Data Scientist. Work with Python, Pandas, NumPy, Scikit-learn and support TensorFlow, SQL. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Not disclosed",
+    "job_url": "https://jobs.example.local/job-098"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-099",
+    "title": "Associate AI Engineer",
+    "company": "Folio3",
+    "location": "Islamabad",
+    "description": "Join a product engineering team as a AI Engineer. Work with Python, PyTorch, TensorFlow, FastAPI and support Docker, AWS. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Competitive salary",
+    "job_url": "https://jobs.example.local/job-099"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-100",
+    "title": "DevOps Engineer",
+    "company": "Systems Ltd",
+    "location": "Hybrid Lahore",
+    "description": "Join a product engineering team as a DevOps Engineer. Work with Docker, Kubernetes, AWS, Linux and support CI/CD, Git. junior team. Hybrid collaboration. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 80k - 120k",
+    "job_url": "https://jobs.example.local/job-100"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-101",
+    "title": ".NET Developer",
+    "company": "Techlogix",
+    "location": "Remote",
+    "description": "Join a product engineering team as a .NET Developer. Work with C#, .NET, SQL, Azure and support REST APIs, Git. entry level role. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Market competitive",
+    "job_url": "https://jobs.example.local/job-101"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-102",
+    "title": "Mobile App Developer",
+    "company": "VentureDive",
+    "location": "Remote Pakistan",
+    "description": "Join a product engineering team as a Mobile Developer. Work with JavaScript, React, REST APIs, Testing and support Git. 2+ years preferred. Remote friendly. Build clean features, review code, and collaborate with product teams.",
+    "salary": "$500 - $900",
+    "job_url": "https://jobs.example.local/job-102"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-103",
+    "title": "QA Engineer",
+    "company": "Remote startup",
+    "location": "USA",
+    "description": "Join a product engineering team as a QA Engineer. Work with Testing, Git, SQL, CI/CD and support Linux. senior mentors available. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "Rs. 100,000 per month",
+    "job_url": "https://jobs.example.local/job-103"
+  },
+  {
+    "source": "sample_board",
+    "source_job_id": "job-104",
+    "title": "Entry Level Software Engineer",
+    "company": "Arbisoft",
+    "location": "Karachi",
+    "description": "Join a product engineering team as a Software Engineer. Work with JavaScript, Python, SQL, Git and support REST APIs. fresh graduates welcome. Onsite delivery. Build clean features, review code, and collaborate with product teams.",
+    "salary": "PKR 150,000 - 220,000",
+    "job_url": "https://jobs.example.local/job-104"
+  }
+]

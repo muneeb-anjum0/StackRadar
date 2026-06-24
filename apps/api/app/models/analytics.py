@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, JSON, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db import Base
@@ -86,3 +86,25 @@ class ValidationResult(Base):
     total_count: Mapped[int] = mapped_column(Integer, default=0)
     severity: Mapped[str] = mapped_column(String(40), default="medium")
     message: Mapped[str | None] = mapped_column(Text)
+
+
+class AiReport(Base):
+    __tablename__ = "ai_reports"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    report_type: Mapped[str] = mapped_column(String(80), index=True)
+    target_role: Mapped[str] = mapped_column(String(120), index=True)
+    current_skills: Mapped[list[str]] = mapped_column(JSON)
+    provider: Mapped[str] = mapped_column(String(40), index=True)
+    model: Mapped[str | None] = mapped_column(String(120))
+    prompt_version: Mapped[str] = mapped_column(String(40), default="v1")
+    input_hash: Mapped[str] = mapped_column(String(64), index=True)
+    input_snapshot: Mapped[dict] = mapped_column(JSON)
+    output_text: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+    reused_from_cache: Mapped[bool] = mapped_column(Boolean, default=False)
+    token_budget_hint: Mapped[int] = mapped_column(Integer, default=900)
+
+    __table_args__ = (
+        Index("ix_ai_reports_lookup", "report_type", "target_role", "provider", "input_hash", "created_at"),
+    )

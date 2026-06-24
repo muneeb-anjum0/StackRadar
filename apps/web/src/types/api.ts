@@ -123,3 +123,43 @@ export type SkillGap = {
   recommended_next_skills: string[];
   summary: string;
 };
+
+export type AiProvider = "mock" | "gemini";
+export type ReportType = "career_report" | "learning_roadmap" | "role_fit" | "project_suggestions" | "skill_gap_brief" | "job_quality";
+
+export type AiStatus = {
+  default_provider: AiProvider;
+  available_providers: AiProvider[];
+  gemini_configured: boolean;
+  real_ai_enabled: boolean;
+  gemini_usage_note: string;
+};
+
+export type AiReport = {
+  id: number;
+  report_type: ReportType;
+  target_role: string;
+  current_skills: string[];
+  provider: AiProvider;
+  model: string | null;
+  prompt_version: string;
+  input_snapshot: Record<string, unknown>;
+  output_text: string;
+  created_at: string;
+  reused_from_cache: boolean;
+  token_budget_hint: number;
+};
+
+export type AiReportRequest = {
+  target_role: string;
+  current_skills: string[];
+  provider: AiProvider;
+  weeks?: number;
+};
+
+export type AiUsage = {
+  gemini_reports_total: number;
+  mock_reports_total: number;
+  latest_gemini_report_at: string | null;
+  cooldown_seconds: number;
+};

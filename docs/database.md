@@ -15,3 +15,5 @@
 `source_health` stores the latest collector health per source, including last attempt, last success, fetched count, inserted count, duplicate skips, failures, last error and clean rate.
 
 `validation_results` stores the latest lightweight validation report. Each row has a check name, pass/fail status, failed count, total count, severity and optional message.
+
+`ai_reports` stores generated AI career intelligence reports. It keeps report type, target role, current skills, provider, model, prompt version, input hash, structured input snapshot, output text, created time, cache reuse flag and token budget hint. It never stores API keys.

@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../lib/api";
 import { Overview } from "../../types/api";
+import { FloatingRail } from "../workspace/FloatingRail";
 
-export type Page = "overview" | "skills" | "roles" | "gap" | "quality" | "jobs";
+export type Page = "overview" | "skills" | "roles" | "gap" | "intelligence" | "quality" | "jobs";
 
 const groups = [
   { label: "Workspace", items: [{ id: "overview", label: "Overview" }, { id: "skills", label: "Skills" }, { id: "roles", label: "Roles" }, { id: "jobs", label: "Jobs" }] },
-  { label: "Personal", items: [{ id: "gap", label: "Skill Gap" }] },
+  { label: "Personal", items: [{ id: "gap", label: "Skill Gap" }, { id: "intelligence", label: "Intelligence" }] },
   { label: "System", items: [{ id: "quality", label: "Data Quality" }] }
 ] as const;
 
@@ -14,7 +15,7 @@ export function Sidebar({ page, onChange }: { page: Page; onChange: (page: Page)
   const overview = useQuery({ queryKey: ["overview"], queryFn: () => api.get<Overview>("/analytics/overview") });
 
   return (
-    <aside className="flex rounded-2xl border border-slate-200/80 bg-white/85 p-3 shadow-[0_22px_60px_rgba(15,23,42,0.09)] backdrop-blur-xl lg:sticky lg:top-8 lg:min-h-[calc(100vh-4rem)] lg:flex-col">
+    <FloatingRail>
       <div className="hidden px-2 pb-5 lg:block">
         <p className="text-lg font-semibold tracking-normal text-slate-950">StackRadar</p>
         <p className="mt-1 text-xs leading-5 text-slate-500">market intelligence</p>
@@ -51,6 +52,6 @@ export function Sidebar({ page, onChange }: { page: Page; onChange: (page: Page)
         <p className="mt-2 text-xs text-slate-500">{overview.data?.total_jobs ?? "..."} clean jobs</p>
         <p className="mt-1 text-xs text-slate-500">{overview.data?.data_quality_score ?? "..."}% quality</p>
       </div>
-    </aside>
+    </FloatingRail>
   );
 }

@@ -6,6 +6,9 @@ class Settings(BaseSettings):
     app_name: str = "StackRadar API"
     database_url: str = "postgresql+psycopg2://stackradar:stackradar@localhost:5432/stackradar"
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    ai_provider: str = "mock"
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-1.5-flash"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 

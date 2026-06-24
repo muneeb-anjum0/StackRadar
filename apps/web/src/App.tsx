@@ -4,6 +4,7 @@ import { AppShell } from "./components/layout/AppShell";
 import { Page } from "./components/layout/Sidebar";
 import { DataQuality } from "./pages/DataQuality";
 import { Jobs } from "./pages/Jobs";
+import { Intelligence } from "./pages/Intelligence";
 import { Overview } from "./pages/Overview";
 import { Roles } from "./pages/Roles";
 import { SkillGap } from "./pages/SkillGap";
@@ -14,6 +15,7 @@ const pages: Record<Page, JSX.Element> = {
   skills: <Skills />,
   roles: <Roles />,
   gap: <SkillGap />,
+  intelligence: <Intelligence />,
   quality: <DataQuality />,
   jobs: <Jobs />
 };

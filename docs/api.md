@@ -24,4 +24,10 @@ Skill gap request:
 }
 ```
 
+Quality observability routes:
+
+- `GET /quality/pipeline-runs` returns the latest 20 operational runs.
+- `GET /quality/source-health` returns collector health by source.
+- `GET /quality/validations` returns the latest validation report.
+
 Key routes are grouped under `/jobs`, `/analytics` and `/quality`. Interactive documentation is available at `http://localhost:8000/docs` when the API is running.

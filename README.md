@@ -12,6 +12,8 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 
 - FastAPI backend with SQLAlchemy and Pydantic schemas
 - PostgreSQL storage for raw jobs, clean jobs, skills, analytics and quality runs
+- Optional Kafka event ingestion for raw job events
+- Optional Airflow DAG for local orchestration
 - Messy sample dataset with 105 realistic postings
 - Live API collectors for Remotive and Adzuna
 - Cleaning pipeline for titles, roles, seniority, work mode, location and salary
@@ -19,7 +21,7 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 - Duplicate detection using source IDs and content fingerprints
 - Analytics endpoints for overview, skills, roles, trends and skill gaps
 - Career intelligence workspace with source freshness, source filters and API-backed analytics
-- Docker Compose local setup with Postgres, Redis, API and web app
+- Docker Compose local setup with Postgres, Redis, Kafka, API and web app
 
 ## Architecture
 
@@ -27,6 +29,8 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 flowchart LR
   A["sample_jobs.json / live APIs"] --> B["Raw job loader"]
   B --> C[("raw_jobs")]
+  B -. "Kafka mode" .-> K[("raw_jobs topic")]
+  K -. "consumer" .-> C
   C --> D["Cleaning pipeline"]
   D --> E[("clean_jobs")]
   D --> F[("skills + job_skills")]
@@ -84,11 +88,31 @@ PowerShell:
 
 By default this fetches Remotive and Adzuna. Remotive needs no key. Adzuna is skipped unless `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` are set.
 
+Kafka demo mode publishes events first, then consumes them into Postgres:
+
+```bash
+bash scripts/collect-live.sh --mode kafka
+bash scripts/kafka-consume.sh
+```
+
+Airflow is optional and runs behind a Docker Compose profile:
+
+```bash
+bash scripts/airflow-up.sh
+```
+
+PowerShell:
+
+```powershell
+.\scripts\airflow-up.ps1
+```
+
 Open:
 
 - Dashboard: http://localhost:5173
 - API: http://localhost:8000
 - API docs: http://localhost:8000/docs
+- Airflow, when enabled: http://localhost:8080
 - PostgreSQL: localhost:5432
 
 Reset the database volume:
@@ -124,6 +148,9 @@ The repository follows the requested `apps`, `pipelines`, `infra`, `docs` and `s
 - `POST /analytics/skill-gap`
 - `GET /quality/summary`
 - `GET /quality/issues`
+- `GET /quality/pipeline-runs`
+- `GET /quality/source-health`
+- `GET /quality/validations`
 
 ## Dashboard Pages
 
@@ -150,6 +177,8 @@ Live mode supports:
 Set optional environment values in `infra/.env.example`:
 
 ```bash
+PIPELINE_MODE=direct
+KAFKA_BOOTSTRAP_SERVERS=localhost:9092
 ADZUNA_APP_ID=
 ADZUNA_APP_KEY=
 ADZUNA_COUNTRY=gb
@@ -164,6 +193,8 @@ Troubleshooting:
 - Missing Adzuna keys: expected; Adzuna will be skipped and Remotive can still collect.
 - API request failed: retry with a smaller limit or broader query.
 - No jobs inserted: likely duplicate source IDs already exist.
+- Kafka unavailable: use direct mode; the collector defaults to direct database writes.
+- Airflow too heavy locally: leave the profile off and use the scripts directly.
 - Need a clean run: reset the DB, restart Docker, then run `scripts/seed.sh` or `scripts/collect-live.sh`.
 
 ## Screenshots
@@ -183,7 +214,7 @@ Add screenshots here after running the local dashboard:
 - Managed AI plan using platform keys
 - Payment webhooks and subscriptions
 - Background jobs for scheduled refreshes
-- Kafka or Airflow only after the local core remains stable
+- Managed scheduling and hosted pipeline workers
 
 ## SaaS Plan Idea
 

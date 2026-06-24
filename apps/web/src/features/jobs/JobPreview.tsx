@@ -11,7 +11,7 @@ export function JobPreview({ job }: { job?: Job }) {
     );
   }
   return (
-    <aside className="sticky top-28 rounded-[1.5rem] border border-slate-200 bg-white/86 p-5 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
+    <aside className="sticky top-6 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.5rem] border border-slate-200 bg-white p-5">
       <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Evidence preview</p>
       <h2 className="mt-4 text-xl font-semibold text-slate-950">{job.normalized_title}</h2>
       <p className="mt-2 text-sm leading-6 text-slate-500">{job.company ?? "Unknown company"} / {job.normalized_role}</p>

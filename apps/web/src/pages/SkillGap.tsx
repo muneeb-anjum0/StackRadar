@@ -4,20 +4,34 @@ import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Select } from "../components/ui/Select";
 import { Badge } from "../components/ui/Badge";
+import { AiActionPanel } from "../components/intelligence/AiActionPanel";
+import { IntelligenceBrief } from "../components/intelligence/IntelligenceBrief";
+import { ReportHistoryShelf } from "../components/intelligence/ReportHistoryShelf";
 import { CommandStrip } from "../components/workspace/CommandStrip";
 import { InsightNote, InsightRail } from "../components/workspace/InsightRail";
 import { ModuleCard } from "../components/workspace/ModuleCard";
 import { PageFrame } from "../components/workspace/PageFrame";
 import { SkillPill } from "../components/workspace/Pills";
+import { SmoothSection } from "../components/workspace/SmoothSection";
 import { WorkspaceHeader } from "../components/workspace/WorkspaceHeader";
+import { useAiGenerate } from "../hooks/useAiGenerate";
+import { useAiReports, useAiStatus, useAiUsage } from "../hooks/useAiReports";
+import { useProviderChoice } from "../hooks/useProviderChoice";
+import { parseSkills } from "../hooks/useSkillGapState";
 import { api } from "../lib/api";
-import { CountItem, SkillGap as SkillGapType } from "../types/api";
+import { AiReport, CountItem, ReportType, SkillGap as SkillGapType } from "../types/api";
 
 export function SkillGap() {
   const [role, setRole] = useState("Backend Developer");
   const [skills, setSkills] = useState("React, Node.js, MongoDB");
+  const [selectedReport, setSelectedReport] = useState<AiReport | null>(null);
+  const providerChoice = useProviderChoice("mock");
+  const aiStatus = useAiStatus();
+  const aiUsage = useAiUsage();
+  const aiReports = useAiReports();
+  const aiGenerate = useAiGenerate(aiUsage.data?.cooldown_seconds ?? 20);
   const roles = useQuery({ queryKey: ["top-roles"], queryFn: () => api.get<CountItem[]>("/analytics/top-roles") });
-  const currentSkills = skills.split(",").map((item) => item.trim()).filter(Boolean);
+  const currentSkills = parseSkills(skills);
   const mutation = useMutation({
     mutationFn: () =>
       api.post<SkillGapType>("/analytics/skill-gap", {
@@ -25,6 +39,25 @@ export function SkillGap() {
         current_skills: currentSkills
       })
   });
+  const aiError = aiGenerate.error instanceof Error ? aiGenerate.error.message : null;
+
+  function generate(type: ReportType) {
+    if (!mutation.data) return;
+    aiGenerate.mutate(
+      {
+        reportType: type,
+        payload: {
+          target_role: role,
+          current_skills: currentSkills,
+          provider: providerChoice.provider,
+          weeks: 4
+        }
+      },
+      {
+        onSuccess: (report) => setSelectedReport(report)
+      }
+    );
+  }
 
   return (
     <PageFrame
@@ -71,6 +104,25 @@ export function SkillGap() {
           <ModuleCard title="Generated intelligence brief" eyebrow="Summary">
             <p className="text-base leading-7 text-slate-600">{mutation.data.summary}</p>
           </ModuleCard>
+          <SmoothSection>
+            <AiActionPanel
+              provider={providerChoice.provider}
+              onProvider={providerChoice.setProvider}
+              status={aiStatus.data}
+              confirmed={providerChoice.geminiConfirmed}
+              onConfirm={providerChoice.confirmGemini}
+              cooldownRemaining={aiGenerate.cooldownRemaining}
+              disabled={aiGenerate.isPending}
+              activeType={aiGenerate.activeType}
+              onGenerate={generate}
+              sessionCount={aiGenerate.geminiSessionCount}
+              usage={aiUsage.data}
+            />
+          </SmoothSection>
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
+            <IntelligenceBrief report={selectedReport} loading={aiGenerate.isPending} error={aiError} />
+            <ReportHistoryShelf reports={(aiReports.data ?? []).slice(0, 5)} onSelect={setSelectedReport} />
+          </div>
         </>
       )}
     </PageFrame>

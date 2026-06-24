@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import get_settings
 from app.core.db import create_tables
-from app.routers import analytics, health, jobs, quality
+from app.routers import ai, analytics, health, jobs, quality
 
 settings = get_settings()
 
@@ -20,6 +20,7 @@ app.include_router(health.router)
 app.include_router(jobs.router)
 app.include_router(analytics.router)
 app.include_router(quality.router)
+app.include_router(ai.router)
 
 
 @app.on_event("startup")

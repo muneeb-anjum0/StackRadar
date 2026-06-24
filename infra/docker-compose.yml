@@ -56,6 +56,9 @@ services:
   api:
     build:
       context: ../apps/api
+    env_file:
+      - path: .env
+        required: false
     environment:
       DATABASE_URL: postgresql+psycopg2://stackradar:stackradar@postgres:5432/stackradar
       CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173

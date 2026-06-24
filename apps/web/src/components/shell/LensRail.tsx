@@ -12,7 +12,7 @@ const lenses: { id: Page; label: string; helper: string }[] = [
 
 export function LensRail({ page, onPage, cleanJobs, quality }: { page: Page; onPage: (page: Page) => void; cleanJobs?: number; quality?: number }) {
   return (
-    <aside className="sticky top-5 z-20 max-h-[calc(100vh-2.5rem)] min-h-[calc(100vh-2.5rem)] overflow-y-auto rounded-[1.35rem] border border-white/80 bg-white/82 p-3 shadow-[0_22px_70px_rgba(15,23,42,0.10)] backdrop-blur-xl">
+    <aside className="sticky top-5 z-20 max-h-[calc(100vh-2.5rem)] min-h-[calc(100vh-2.5rem)] overflow-y-auto rounded-[1.35rem] border border-white/80 bg-white/82 p-3 shadow-[0_22px_70px_rgba(15,23,42,0.10)] backdrop-blur-xl lg:fixed lg:left-[max(2rem,calc((100vw-1680px)/2+2rem))] lg:top-6 lg:h-[calc(100vh-3rem)] lg:w-[248px] lg:min-h-0 lg:max-h-[calc(100vh-3rem)]">
       <div className="px-2 pb-4">
         <p className="text-[15px] font-semibold tracking-tight text-slate-950">StackRadar</p>
         <p className="mt-0.5 text-[11px] text-slate-400">career console</p>

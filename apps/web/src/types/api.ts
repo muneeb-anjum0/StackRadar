@@ -79,6 +79,42 @@ export type QualitySummary = {
 
 export type QualityIssue = { severity: string; title: string; description: string; count: number };
 
+export type PipelineRun = {
+  id: number;
+  run_type: string;
+  source: string | null;
+  started_at: string;
+  finished_at: string | null;
+  status: string;
+  raw_inserted: number;
+  clean_created: number;
+  duplicates_skipped: number;
+  failed_count: number;
+  message: string | null;
+};
+
+export type SourceHealth = {
+  source: string;
+  status: string;
+  last_attempt_at: string | null;
+  last_success_at: string | null;
+  fetched_count: number;
+  inserted_count: number;
+  skipped_duplicates: number;
+  failed_count: number;
+  clean_rate: number;
+  last_error: string | null;
+};
+
+export type ValidationCheck = {
+  check_name: string;
+  status: string;
+  failed_count: number;
+  total_count: number;
+  severity: string;
+  message: string | null;
+};
+
 export type SkillGap = {
   target_role: string;
   match_percentage: number;

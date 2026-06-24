@@ -1,8 +1,9 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.models.analytics import DataQualityRun
-from app.schemas.quality import QualityIssue, QualitySummary
+from app.models.analytics import DataQualityRun, PipelineRun, SourceHealth, ValidationResult
+from app.models.job import CleanJob, RawJob
+from app.schemas.quality import PipelineRunOut, QualityIssue, QualitySummary, SourceHealthOut, ValidationCheckOut
 
 
 def latest_summary(db: Session) -> QualitySummary:
@@ -35,3 +36,42 @@ def quality_issues(db: Session) -> list[QualityIssue]:
         ("low", "Missing descriptions", "Descriptions are needed for skill extraction.", summary.missing_description_count),
     ]
     return [QualityIssue(severity=s, title=t, description=d, count=c) for s, t, d, c in checks if c > 0]
+
+
+def latest_pipeline_runs(db: Session, limit: int = 20) -> list[PipelineRunOut]:
+    rows = db.scalars(select(PipelineRun).order_by(PipelineRun.started_at.desc()).limit(limit)).all()
+    return [PipelineRunOut.model_validate(row, from_attributes=True) for row in rows]
+
+
+def source_health(db: Session) -> list[SourceHealthOut]:
+    rows = db.scalars(select(SourceHealth).order_by(SourceHealth.source)).all()
+    output: list[SourceHealthOut] = []
+    for row in rows:
+        raw_count = db.scalar(select(func.count(RawJob.id)).where(RawJob.source == row.source)) or 0
+        clean_count = db.scalar(
+            select(func.count(CleanJob.id)).join(RawJob, RawJob.id == CleanJob.raw_job_id).where(RawJob.source == row.source)
+        ) or 0
+        clean_rate = round((clean_count / raw_count) * 100, 1) if raw_count else row.avg_clean_rate
+        output.append(
+            SourceHealthOut(
+            source=row.source,
+            status=row.status,
+            last_attempt_at=row.last_attempt_at,
+            last_success_at=row.last_success_at,
+            fetched_count=row.fetched_count,
+            inserted_count=row.inserted_count,
+            skipped_duplicates=row.skipped_duplicates,
+            failed_count=row.failed_count,
+            clean_rate=clean_rate,
+            last_error=row.last_error,
+            )
+        )
+    return output
+
+
+def latest_validations(db: Session) -> list[ValidationCheckOut]:
+    latest_run = db.scalar(select(ValidationResult.run_at).order_by(ValidationResult.run_at.desc()).limit(1))
+    if latest_run is None:
+        return []
+    rows = db.scalars(select(ValidationResult).where(ValidationResult.run_at == latest_run).order_by(ValidationResult.severity, ValidationResult.check_name)).all()
+    return [ValidationCheckOut.model_validate(row, from_attributes=True) for row in rows]

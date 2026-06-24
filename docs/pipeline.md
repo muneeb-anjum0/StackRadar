@@ -1,6 +1,6 @@
 # Pipeline
 
-StackRadar now supports two ingestion modes.
+StackRadar supports two ingestion modes.
 
 ## Demo Seed
 
@@ -29,6 +29,21 @@ PYTHONPATH=apps/api:. python pipelines/collectors/live_collect.py --source all -
 
 Adzuna is skipped gracefully when keys are missing. Remotive still runs.
 
+Direct mode is the default:
+
+```bash
+PYTHONPATH=apps/api:. python pipelines/collectors/live_collect.py --source remotive --limit 500 --mode direct
+```
+
+Kafka mode publishes normalized raw-job events to the `raw_jobs` topic:
+
+```bash
+PYTHONPATH=apps/api:. python pipelines/collectors/live_collect.py --source remotive --limit 500 --mode kafka
+PYTHONPATH=apps/api:. python pipelines/events/consumer.py --topic raw_jobs --max-messages 1000 --timeout-seconds 30
+```
+
+The consumer validates required fields, skips duplicate source IDs and records a `kafka_consume` pipeline run.
+
 ## Processing Flow
 
 1. Collect or seed jobs into `raw_jobs`.
@@ -39,6 +54,29 @@ Adzuna is skipped gracefully when keys are missing. Remotive still runs.
 6. Extract skills with a normalized dictionary.
 7. Build role-skill summaries and daily skill trend rows.
 8. Run data quality checks and store the latest score.
+9. Store pipeline runs, source health and validation results for the dashboard.
+
+## Pipeline Runs
+
+Each major script records a `pipeline_runs` row with type, source, status, start/end time, inserted counts, duplicate counts, failure counts and a short message.
+
+Current run types:
+
+- `sample_seed`
+- `live_collect_direct`
+- `live_collect_kafka`
+- `kafka_consume`
+- `clean_jobs`
+- `build_analytics`
+- `quality_check`
+
+## Source Health
+
+Collectors update `source_health` for `sample`, `remotive`, `adzuna` and Kafka consumer activity. The dashboard shows last success, fetched count, inserted count, failures and clean rate.
+
+## Validation Checks
+
+Quality checks now store a Great Expectations-style report in `validation_results`. Checks cover raw/clean presence, missing titles, missing companies, missing descriptions, salary range order, skill extraction coverage, duplicate rate, clean rate and source freshness.
 
 ## Attribution
 

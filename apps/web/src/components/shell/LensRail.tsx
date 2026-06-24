@@ -12,7 +12,7 @@ const lenses: { id: Page; label: string; helper: string }[] = [
 
 export function LensRail({ page, onPage, cleanJobs, quality }: { page: Page; onPage: (page: Page) => void; cleanJobs?: number; quality?: number }) {
   return (
-    <aside className="sticky top-6 z-20 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white p-3 shadow-sm">
+    <aside className="sticky top-6 z-20 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white p-3">
       <div className="px-2 pb-4">
         <p className="text-[15px] font-semibold tracking-tight text-slate-950">StackRadar</p>
         <p className="mt-0.5 text-[11px] text-slate-400">career console</p>

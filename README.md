@@ -14,6 +14,7 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 - PostgreSQL storage for raw jobs, clean jobs, skills, analytics and quality runs
 - Optional Kafka event ingestion for raw job events
 - Optional Airflow DAG for local orchestration
+- Manual AI career intelligence with Mock and Gemini providers
 - Messy sample dataset with 105 realistic postings
 - Live API collectors for Remotive and Adzuna
 - Cleaning pipeline for titles, roles, seniority, work mode, location and salary
@@ -29,8 +30,8 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 flowchart LR
   A["sample_jobs.json / live APIs"] --> B["Raw job loader"]
   B --> C[("raw_jobs")]
-  B -. "Kafka mode" .-> K[("raw_jobs topic")]
-  K -. "consumer" .-> C
+  B -. "Kafka mode" .-> T[("raw_jobs topic")]
+  T -. "consumer" .-> C
   C --> D["Cleaning pipeline"]
   D --> E[("clean_jobs")]
   D --> F[("skills + job_skills")]
@@ -41,7 +42,8 @@ flowchart LR
   H --> J["FastAPI"]
   E --> J
   I --> J
-  J --> K["React dashboard"]
+  J --> R["React dashboard"]
+  J --> AI["AI career reports"]
 ```
 
 ## Tech Stack
@@ -151,6 +153,14 @@ The repository follows the requested `apps`, `pipelines`, `infra`, `docs` and `s
 - `GET /quality/pipeline-runs`
 - `GET /quality/source-health`
 - `GET /quality/validations`
+- `GET /ai/status`
+- `POST /ai/career-report`
+- `POST /ai/learning-roadmap`
+- `POST /ai/project-suggestions`
+- `POST /ai/role-fit`
+- `POST /ai/skill-gap-brief`
+- `GET /ai/reports`
+- `GET /ai/usage`
 
 ## Dashboard Pages
 
@@ -158,6 +168,7 @@ The repository follows the requested `apps`, `pipelines`, `infra`, `docs` and `s
 - Skills Intelligence
 - Role Analyzer
 - Skill Gap Checker
+- Intelligence
 - Data Quality Monitor
 - Jobs Explorer
 
@@ -177,6 +188,9 @@ Live mode supports:
 Set optional environment values in `infra/.env.example`:
 
 ```bash
+AI_PROVIDER=mock
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-1.5-flash
 PIPELINE_MODE=direct
 KAFKA_BOOTSTRAP_SERVERS=localhost:9092
 ADZUNA_APP_ID=
@@ -195,6 +209,7 @@ Troubleshooting:
 - No jobs inserted: likely duplicate source IDs already exist.
 - Kafka unavailable: use direct mode; the collector defaults to direct database writes.
 - Airflow too heavy locally: leave the profile off and use the scripts directly.
+- Gemini unavailable: use Mock mode; it is the default and does not require a key.
 - Need a clean run: reset the DB, restart Docker, then run `scripts/seed.sh` or `scripts/collect-live.sh`.
 
 ## Screenshots
@@ -210,7 +225,7 @@ Add screenshots here after running the local dashboard:
 
 - Authentication and saved workspaces
 - User-uploaded job datasets
-- AI-assisted extraction with BYOK keys
+- AI career reports with BYOK keys
 - Managed AI plan using platform keys
 - Payment webhooks and subscriptions
 - Background jobs for scheduled refreshes

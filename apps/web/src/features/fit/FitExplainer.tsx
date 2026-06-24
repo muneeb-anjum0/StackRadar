@@ -1,0 +1,9 @@
+export function FitExplainer() {
+  return (
+    <div className="rounded-[1.35rem] border border-slate-200 bg-slate-50/70 p-5 text-sm leading-6 text-slate-600">
+      <p className="font-semibold text-slate-950">How AI is used here</p>
+      <p className="mt-2">Fit analysis uses StackRadar analytics only. AI briefs are generated only when you click a report button.</p>
+      <p className="mt-2">Mock mode is local and free. Gemini mode uses API quota and is manual only.</p>
+    </div>
+  );
+}

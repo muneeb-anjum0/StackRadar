@@ -13,7 +13,7 @@ export function ShellFrame({ page, onPage, children }: { page: Page; onPage: (pa
 
   return (
     <div className="min-h-screen bg-[#f5f6f8] text-slate-950">
-      <div className="mx-auto grid max-w-[1680px] gap-6 px-4 py-5 sm:px-6 lg:grid-cols-[248px_minmax(0,1fr)] lg:px-8 lg:py-6">
+      <div className="mx-auto grid max-w-[1680px] items-start gap-6 px-4 py-5 sm:px-6 lg:grid-cols-[248px_minmax(0,1fr)] lg:px-8 lg:py-6">
         <LensRail page={page} onPage={onPage} cleanJobs={overview.data?.total_jobs} quality={overview.data?.data_quality_score} />
         <SignalCanvas>
           <ContextRibbon overview={overview.data} sources={sources.data} aiStatus={aiStatus.data} />

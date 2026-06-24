@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { AppShell } from "./components/layout/AppShell";
-import { Page } from "./components/layout/Sidebar";
+import { AppShell, Page } from "./components/layout/AppShell";
 import { DataQuality } from "./pages/DataQuality";
 import { Jobs } from "./pages/Jobs";
 import { Intelligence } from "./pages/Intelligence";

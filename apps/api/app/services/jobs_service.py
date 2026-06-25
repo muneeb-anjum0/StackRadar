@@ -5,15 +5,69 @@ from app.models.job import CleanJob, RawJob
 from app.models.skill import JobSkill, Skill
 from app.schemas.job import JobDetail, JobOut, SkillOut
 
+NON_TECHNICAL_TITLE_KEYWORDS = {
+    "sales",
+    "copywriter",
+    "writer",
+    "assistant",
+    "account payable",
+    "customer operations",
+    "office assistant",
+    "financial sales",
+    "customer support",
+    "operations",
+}
+
+TECHNICAL_SKILL_CATEGORIES = {"frontend", "backend", "data", "ai", "cloud", "devops", "database", "language", "framework", "testing", "mobile", "tool"}
+TECHNICAL_ROLE_KEYWORDS = {"developer", "engineer", "software", "data", "frontend", "backend", "mobile", "qa", "devops", "cloud", "analyst"}
+
 
 def _skill_out(job_skill: JobSkill) -> SkillOut:
     return SkillOut(id=job_skill.skill.id, name=job_skill.skill.name, category=job_skill.skill.category)
 
 
+def classification_signal(job: CleanJob) -> tuple[str, list[str], bool, bool]:
+    title = f"{job.raw_job.raw_title or ''} {job.normalized_title or ''}".lower()
+    role = (job.normalized_role or "").lower()
+    skill_categories = {item.skill.category.lower() for item in job.skills if item.skill and item.skill.category}
+    skill_names = {item.skill.name.lower() for item in job.skills if item.skill and item.skill.name}
+    notes: list[str] = []
+    score = 72
+
+    noisy_terms = sorted(term for term in NON_TECHNICAL_TITLE_KEYWORDS if term in title)
+    if noisy_terms:
+        score -= 35
+        notes.append(f"Title contains non-technical signal: {', '.join(noisy_terms)}")
+    if role == "unknown":
+        score -= 22
+        notes.append("Role classifier returned Unknown")
+    if not skill_names:
+        score -= 25
+        notes.append("No technical skills were extracted")
+    if skill_categories & TECHNICAL_SKILL_CATEGORIES:
+        score += 18
+        notes.append("Extracted skills support a technical classification")
+    if any(term in role for term in TECHNICAL_ROLE_KEYWORDS):
+        score += 10
+    if noisy_terms and any(term in role for term in {"frontend", "backend", "mobile", "qa"}):
+        score -= 20
+        notes.append("Role label may conflict with the source title")
+
+    bounded = max(0, min(100, score))
+    confidence = "high" if bounded >= 75 else "medium" if bounded >= 45 else "low"
+    is_technical = bounded >= 45 and (bool(skill_names) or any(term in role for term in TECHNICAL_ROLE_KEYWORDS))
+    needs_review = confidence == "low" or bool(noisy_terms) or role == "unknown"
+    if not notes:
+        notes.append("Role, title and extracted skills are consistent enough for analytics")
+    return confidence, notes, is_technical, needs_review
+
+
 def to_job_out(job: CleanJob) -> JobOut:
+    confidence, notes, is_technical, needs_review = classification_signal(job)
     return JobOut(
         id=job.id,
         source=job.raw_job.source,
+        raw_title=job.raw_job.raw_title,
         normalized_title=job.normalized_title,
         normalized_role=job.normalized_role,
         company=job.company,
@@ -24,11 +78,16 @@ def to_job_out(job: CleanJob) -> JobOut:
         salary_min=job.salary_min,
         salary_max=job.salary_max,
         currency=job.currency,
+        raw_salary=job.raw_job.raw_salary,
         posted_at=job.posted_at,
         collected_at=job.raw_job.collected_at,
         job_url=job.job_url,
         created_at=job.created_at,
         skills=[_skill_out(item) for item in job.skills],
+        classification_confidence=confidence,
+        classification_notes=notes,
+        is_technical=is_technical,
+        needs_review=needs_review,
     )
 
 

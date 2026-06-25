@@ -8,14 +8,14 @@ export function DemandBars({ items, limit = 8 }: { items: CountItem[]; limit?: n
         <div key={item.name} className="grid grid-cols-[minmax(0,1fr)_44px] items-center gap-3">
           <div>
             <div className="mb-1 flex justify-between gap-3 text-sm">
-              <span className="truncate font-medium text-slate-800">{item.name}</span>
-              <span className="text-slate-400">{item.percentage}%</span>
+              <span className="truncate font-medium text-slate-200">{item.name}</span>
+              <span className="text-slate-500">{item.percentage}%</span>
             </div>
-            <div className="h-2 rounded-full bg-slate-100">
-              <div className="h-full rounded-full bg-slate-900" style={{ width: `${(item.count / max) * 100}%` }} />
+            <div className="h-2 rounded-full bg-white/[0.07]">
+              <div className="h-full rounded-full bg-slate-300" style={{ width: `${(item.count / max) * 100}%` }} />
             </div>
           </div>
-          <span className="text-right text-sm text-slate-500">{item.count}</span>
+          <span className="text-right text-sm text-slate-400">{item.count}</span>
         </div>
       ))}
     </div>

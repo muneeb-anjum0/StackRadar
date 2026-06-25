@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SkillOut(BaseModel):
@@ -13,6 +13,7 @@ class SkillOut(BaseModel):
 class JobOut(BaseModel):
     id: int
     source: str
+    raw_title: str | None = None
     normalized_title: str
     normalized_role: str
     company: str | None
@@ -23,11 +24,16 @@ class JobOut(BaseModel):
     salary_min: float | None
     salary_max: float | None
     currency: str | None
+    raw_salary: str | None = None
     posted_at: datetime | None
     collected_at: datetime | None
     job_url: str | None
     created_at: datetime
     skills: list[SkillOut]
+    classification_confidence: str = "medium"
+    classification_notes: list[str] = Field(default_factory=list)
+    is_technical: bool = True
+    needs_review: bool = False
 
 
 class JobDetail(JobOut):

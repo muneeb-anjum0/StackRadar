@@ -24,15 +24,13 @@ export function IntelligenceLens() {
     <div className="space-y-7">
       <LensHeader
         eyebrow="AI Reports Lens"
-        title="Every AI output has a provider trail"
-        subtitle="Read generated reports, inspect cache/provider metadata and keep OpenRouter usage visible. Nothing on this page calls OpenRouter."
+        title="AI Reports"
+        subtitle="Review generated career briefs, provider metadata and quota-safe report history."
         action={<SelectField value={reportType} onChange={(event) => setReportType(event.target.value)} options={reportTypes} />}
       />
-      <div className="grid gap-6 xl:grid-cols-[1fr_320px]">
-        <div className="space-y-6">
-          <ReportReader report={active} />
-          <ReportShelf reports={visibleReports} onSelect={setSelected} />
-        </div>
+      <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_320px]">
+        <ReportShelf reports={visibleReports} activeId={active?.id} onSelect={setSelected} />
+        <ReportReader report={active} />
         <div className="space-y-5">
           <ProviderPanel provider={provider} onProvider={setProvider} status={status.data} />
           <UsagePanel usage={usage.data} />

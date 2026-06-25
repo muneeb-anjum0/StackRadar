@@ -70,6 +70,16 @@ Current run types:
 - `build_analytics`
 - `quality_check`
 
+The UI translates internal run names into human labels:
+
+- `live_collect_direct` -> Live collection
+- `clean_jobs` -> Cleaning
+- `build_analytics` -> Analytics build
+- `quality_check` -> Data quality check
+- `kafka_consume` -> Kafka ingestion
+
+Runs that do not produce clean jobs do not display a misleading `0 clean` metric in the Pipeline lens.
+
 ## Source Health
 
 Collectors update `source_health` for `sample`, `remotive`, `adzuna` and Kafka consumer activity. The dashboard shows last success, fetched count, inserted count, failures and clean rate.
@@ -77,6 +87,14 @@ Collectors update `source_health` for `sample`, `remotive`, `adzuna` and Kafka c
 ## Validation Checks
 
 Quality checks now store a Great Expectations-style report in `validation_results`. Checks cover raw/clean presence, missing titles, missing companies, missing descriptions, salary range order, skill extraction coverage, duplicate rate, clean rate and source freshness.
+
+The Pipeline lens answers three user-facing questions:
+
+1. Is the data fresh?
+2. Is it clean?
+3. What should not be trusted fully yet?
+
+Noisy classifications are included in the issue pulse when title, role or extracted-skill signals look suspicious.
 
 ## Attribution
 

@@ -45,12 +45,12 @@ export function FitLens() {
     <div className="space-y-7">
       <LensHeader
         eyebrow="Career Plan Lens"
-        title="Analyze fit, then build the next four weeks"
-        subtitle="Step 1 is deterministic and uses no AI. Steps 2-4 are manual reports with Mock default and OpenRouter quota warnings."
+        title="Career Plan"
+        subtitle="Choose a target role, enter your skills, then get a market-backed next move."
       />
-      <div className="grid gap-3 rounded-[1.5rem] border border-slate-200 bg-white/90 p-3 md:grid-cols-4">
+      <div className="grid gap-3 rounded-[1.5rem] border border-white/[0.08] bg-[#121418]/72 p-3 md:grid-cols-4">
         {planSteps.map((step, index) => (
-          <div key={step.label} className={`rounded-2xl border p-4 ${index === 0 && !fit.analysis.data ? "border-slate-950 bg-slate-950 text-white" : fit.analysis.data && index <= 3 ? "border-slate-200 bg-slate-50/80 text-slate-950" : "border-slate-100 bg-white text-slate-500"}`}>
+          <div key={step.label} className={`rounded-2xl border p-4 ${index === 0 && !fit.analysis.data ? "border-slate-300/30 bg-white/[0.12] text-white" : fit.analysis.data && index <= 3 ? "border-white/[0.08] bg-white/[0.07] text-slate-100" : "border-white/[0.06] bg-white/[0.03] text-slate-500"}`}>
             <p className="text-xs uppercase tracking-[0.16em] opacity-60">Step {index + 1}</p>
             <p className="mt-1 text-lg font-semibold">{step.label}</p>
             <p className="text-xs opacity-70">{step.detail}</p>
@@ -73,8 +73,8 @@ export function FitLens() {
             <FitMeter value={fit.analysis.data.match_percentage} summary={fit.analysis.data.summary} />
             <Surface level={2} className="p-5">
               <div className="mb-5 flex items-center justify-between">
-                <h2 className="text-xl font-semibold text-slate-950">Skill gap path</h2>
-                <span className="text-xs text-slate-400">AI used: No</span>
+                <h2 className="text-xl font-semibold text-slate-100">Skill gap path</h2>
+                <span className="text-xs text-slate-500">AI used: No / Source: StackRadar analytics</span>
               </div>
               <SkillGapPath matched={fit.analysis.data.matched_skills} missing={fit.analysis.data.missing_skills} next={fit.analysis.data.recommended_next_skills} />
             </Surface>

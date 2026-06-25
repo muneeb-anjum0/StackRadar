@@ -44,19 +44,19 @@ export function AiBriefStudio({
   const needsOpenRouterConfirm = provider === "openrouter" && !confirmed;
   const providerLabel = provider === "openrouter" ? "OpenRouter" : "Mock";
   return (
-    <div className="rounded-[1.8rem] border border-slate-200 bg-white/90 p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)]">
+    <div className="rounded-[1.8rem] border border-white/[0.09] bg-[#151820]/92 p-6 shadow-[0_28px_80px_rgba(0,0,0,0.28)]">
       <div className="grid gap-5 xl:grid-cols-[1fr_320px]">
         <div>
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-slate-400">AI Brief Studio</p>
-              <h2 className="mt-2 text-2xl font-semibold text-slate-950">Turn this fit analysis into a career plan</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-500">Provider: {provider === "openrouter" ? "OpenRouter selected, quota/credits will be used only when you click Generate" : "Mock selected, local and deterministic"}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-500">AI Brief Studio</p>
+              <h2 className="mt-2 text-2xl font-semibold text-slate-100">Turn this fit analysis into a career plan</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">Provider: {provider === "openrouter" ? "OpenRouter selected, quota/credits will be used only when you click Generate" : "Mock selected, local and deterministic"}</p>
             </div>
             <SegmentedControl<AiProvider> value={provider} onChange={onProvider} options={[{ value: "mock", label: "Mock" }, { value: "openrouter", label: "OpenRouter" }]} />
           </div>
           {provider === "openrouter" && (
-            <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+            <div className="mt-4 rounded-2xl border border-amber-300/24 bg-amber-400/10 p-4 text-sm text-amber-200">
               OpenRouter uses your API quota/credits. StackRadar will only call it when you click Generate.
               {!confirmed && <SoftButton className="ml-3" variant="quiet" onClick={onConfirm}>Confirm OpenRouter</SoftButton>}
               {cooldownRemaining > 0 && <span className="ml-3">Cooldown: {cooldownRemaining}s</span>}
@@ -74,15 +74,15 @@ export function AiBriefStudio({
               </SoftButton>
             ))}
           </div>
-          {error && <p className="mt-4 text-sm text-rose-600">{error}</p>}
-          <div className="mt-6 min-h-[260px] rounded-[1.35rem] border border-slate-100 bg-slate-50/70 p-5">
-            {loading ? <p className="text-sm text-slate-500">Generating one manual brief...</p> : selected ? <ReportReader report={selected} /> : <p className="text-sm text-slate-500">Choose a report type to generate a manual AI brief.</p>}
+          {error && <p className="mt-4 text-sm text-rose-300">{error}</p>}
+          <div className="mt-6 min-h-[260px] rounded-[1.35rem] border border-white/[0.08] bg-[#0d0f12]/72 p-5">
+            {loading ? <p className="text-sm text-slate-400">Generating one manual brief...</p> : selected ? <ReportReader report={selected} /> : <p className="text-sm text-slate-400">Choose a report type to generate a manual AI brief.</p>}
           </div>
         </div>
         <div>
-          <div className="rounded-[1.35rem] border border-slate-200 bg-slate-50/70 p-4">
-              <p className="text-sm font-semibold text-slate-950">Provider safety</p>
-              <div className="mt-3 grid gap-2 text-sm text-slate-500">
+          <div className="rounded-[1.35rem] border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+              <p className="text-sm font-semibold text-slate-100">Provider safety</p>
+              <div className="mt-3 grid gap-2 text-sm text-slate-400">
               <p>OpenRouter configured: {status?.openrouter_configured ? "yes" : "no"}</p>
               <p>Mock reports: {usage?.mock_reports_total ?? 0}</p>
               <p>OpenRouter reports: {usage?.openrouter_reports_total ?? 0}</p>
@@ -107,7 +107,7 @@ function ReportReader({ report }: { report: AiReport }) {
         <SignalBadge>Source data: StackRadar analytics</SignalBadge>
         <SignalBadge tone={report.reused_from_cache ? "good" : "neutral"}>Cached: {report.reused_from_cache ? "Yes" : "No"}</SignalBadge>
       </div>
-      <pre className="whitespace-pre-wrap text-sm leading-7 text-slate-700">{report.output_text}</pre>
+      <pre className="whitespace-pre-wrap text-sm leading-7 text-slate-300">{report.output_text}</pre>
     </div>
   );
 }

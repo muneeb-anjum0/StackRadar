@@ -10,4 +10,11 @@ Mock AI remains useful for free demos and development because it uses real Stack
 
 Paid users should access processed intelligence, saved workflows and premium AI features. They should not receive separate market pipelines unless enterprise isolation becomes a requirement.
 
+The current lens model is the SaaS product surface:
+
+- Jobs proves the evidence behind recommendations.
+- Pipeline proves the data can be trusted.
+- Career Plan converts market demand into a personal roadmap.
+- AI Reports makes provider usage and report history auditable.
+
 Payment flow can be added with checkout sessions, subscription state stored on user accounts and webhook handlers that update plan entitlements.

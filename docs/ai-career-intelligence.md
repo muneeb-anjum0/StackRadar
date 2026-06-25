@@ -46,6 +46,14 @@ The Fit page is now a guided Career Plan:
 
 Mock can be used freely for demos. OpenRouter is selected manually and confirmed before use.
 
+UI clarity rules:
+
+- Analyze Fit shows `AI used: No` and uses only StackRadar role-skill analytics.
+- Manual report outputs show `AI used: Yes`, provider, cache state and source data.
+- Switching providers does not call OpenRouter.
+- Reading AI Reports history does not call OpenRouter.
+- OpenRouter can run only from an explicit generation button in Career Plan.
+
 ## Cost Controls
 
 OpenRouter is treated like a premium manual action:

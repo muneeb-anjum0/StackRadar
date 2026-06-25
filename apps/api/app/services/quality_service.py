@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from app.models.analytics import DataQualityRun, PipelineRun, SourceHealth, ValidationResult
 from app.models.job import CleanJob, RawJob
 from app.schemas.quality import PipelineRunOut, QualityIssue, QualitySummary, SourceHealthOut, ValidationCheckOut
+from app.services.jobs_service import classification_signal
 
 
 def latest_summary(db: Session) -> QualitySummary:
@@ -20,9 +21,13 @@ def latest_summary(db: Session) -> QualitySummary:
             missing_salary_count=0,
             invalid_salary_count=0,
             jobs_without_skills_count=0,
+            noisy_classification_count=0,
             quality_score=0,
         )
-    return QualitySummary.model_validate(run, from_attributes=True)
+    summary = QualitySummary.model_validate(run, from_attributes=True)
+    rows = db.scalars(select(CleanJob).join(RawJob).limit(500)).all()
+    summary.noisy_classification_count = sum(1 for row in rows if classification_signal(row)[3])
+    return summary
 
 
 def quality_issues(db: Session) -> list[QualityIssue]:
@@ -32,6 +37,7 @@ def quality_issues(db: Session) -> list[QualityIssue]:
         ("medium", "Missing salary", "Jobs without salary reduce compensation insight coverage.", summary.missing_salary_count),
         ("medium", "Missing company", "Company normalization could not resolve every posting.", summary.missing_company_count),
         ("medium", "Jobs without skills", "No dictionary skills were found in these descriptions.", summary.jobs_without_skills_count),
+        ("medium", "Noisy classifications", "Postings whose title, role or extracted skills need review.", summary.noisy_classification_count),
         ("low", "Invalid salary", "Salary text was present but could not be parsed.", summary.invalid_salary_count),
         ("low", "Missing descriptions", "Descriptions are needed for skill extraction.", summary.missing_description_count),
     ]

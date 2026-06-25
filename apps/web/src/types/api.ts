@@ -33,6 +33,7 @@ export type Skill = { id: number; name: string; category: string };
 export type Job = {
   id: number;
   source: string;
+  raw_title: string | null;
   normalized_title: string;
   normalized_role: string;
   company: string | null;
@@ -48,6 +49,11 @@ export type Job = {
   job_url: string | null;
   created_at: string;
   skills: Skill[];
+  classification_confidence: "high" | "medium" | "low";
+  classification_notes: string[];
+  is_technical: boolean;
+  needs_review: boolean;
+  raw_salary?: string | null;
 };
 
 export type JobResponse = { total: number; jobs: Job[] };
@@ -74,6 +80,7 @@ export type QualitySummary = {
   missing_salary_count: number;
   invalid_salary_count: number;
   jobs_without_skills_count: number;
+  noisy_classification_count: number;
   quality_score: number;
 };
 

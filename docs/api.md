@@ -46,3 +46,18 @@ AI career intelligence routes:
 AI requests use existing StackRadar analytics as structured context. API keys are never sent to the frontend.
 
 Key routes are grouped under `/jobs`, `/analytics`, `/quality` and `/ai`. Interactive documentation is available at `http://localhost:8000/docs` when the API is running.
+
+Job evidence responses include derived confidence fields:
+
+```json
+{
+  "raw_title": "Head of Sales",
+  "normalized_role": "Frontend Developer",
+  "classification_confidence": "low",
+  "classification_notes": ["Title contains non-technical signal: sales", "Role label may conflict with the source title"],
+  "is_technical": false,
+  "needs_review": true
+}
+```
+
+These fields are computed from existing data and are used by the Jobs lens filters and Pipeline issue pulse. `GET /quality/summary` also includes `noisy_classification_count`.

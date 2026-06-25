@@ -13,6 +13,7 @@ class QualitySummary(BaseModel):
     missing_salary_count: int
     invalid_salary_count: int
     jobs_without_skills_count: int
+    noisy_classification_count: int = 0
     quality_score: float
 
 

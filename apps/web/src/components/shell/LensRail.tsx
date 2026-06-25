@@ -1,46 +1,119 @@
+import { useState } from "react";
 import { Page } from "./types";
 
-const lenses: { id: Page; label: string; helper: string }[] = [
-  { id: "overview", label: "Market", helper: "signals" },
-  { id: "skills", label: "Skills", helper: "pressure" },
-  { id: "roles", label: "Roles", helper: "blueprint" },
-  { id: "jobs", label: "Jobs", helper: "evidence" },
-  { id: "gap", label: "Career Plan", helper: "guided" },
-  { id: "intelligence", label: "AI Reports", helper: "manual" },
-  { id: "quality", label: "Pipeline", helper: "trust" }
+const groups: { title: string; items: { id: Page; label: string; short: string; helper: string }[] }[] = [
+  {
+    title: "Intelligence",
+    items: [
+      { id: "overview", label: "Market", short: "M", helper: "overall market signal" },
+      { id: "skills", label: "Skills", short: "S", helper: "demand by skill" },
+      { id: "roles", label: "Roles", short: "R", helper: "role requirement blueprint" },
+      { id: "jobs", label: "Jobs", short: "J", helper: "evidence behind signals" }
+    ]
+  },
+  {
+    title: "Personal",
+    items: [
+      { id: "gap", label: "Career Plan", short: "CP", helper: "personal next move" },
+      { id: "intelligence", label: "AI Reports", short: "AI", helper: "generated briefs" }
+    ]
+  },
+  {
+    title: "System",
+    items: [{ id: "quality", label: "Pipeline", short: "P", helper: "data trust center" }]
+  }
 ];
 
-export function LensRail({ page, onPage, cleanJobs, quality }: { page: Page; onPage: (page: Page) => void; cleanJobs?: number; quality?: number }) {
+export function LensRail({
+  page,
+  onPage,
+  cleanJobs,
+  quality,
+  aiProvider
+}: {
+  page: Page;
+  onPage: (page: Page) => void;
+  cleanJobs?: number;
+  quality?: number;
+  aiProvider?: string;
+}) {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <aside className="sticky top-6 z-20 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.35rem] border border-slate-200 bg-white p-3">
-      <div className="px-2 pb-4">
-        <p className="text-[15px] font-semibold tracking-tight text-slate-950">StackRadar</p>
-        <p className="mt-0.5 text-[11px] text-slate-400">career console</p>
-      </div>
-      <nav className="grid gap-1">
-        {lenses.map((lens) => {
-          const active = page === lens.id;
-          return (
-            <button
-              key={lens.id}
-              onClick={() => onPage(lens.id)}
-              className={`group grid grid-cols-[1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition duration-200 ${
-                active
-                  ? "border-slate-200 bg-slate-950 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]"
-                  : "border-transparent text-slate-500 hover:border-slate-200 hover:bg-white hover:text-slate-950"
-              }`}
-            >
-              <span className="text-sm font-medium">{lens.label}</span>
-              <span className={`text-[10px] ${active ? "text-slate-300" : "text-slate-400 group-hover:text-slate-500"}`}>{lens.helper}</span>
-            </button>
-          );
-        })}
-      </nav>
-      <div className="mt-5 border-t border-slate-100 px-2 pt-3 text-[11px] leading-5 text-slate-500">
-        <p>Local graph</p>
-        <p>{cleanJobs ?? "..."} clean jobs</p>
-        <p>{quality ?? "..."}% quality</p>
+    <aside className={`sticky top-0 z-20 h-screen shrink-0 border-r border-white/[0.08] bg-[#08090b]/94 p-3 shadow-[24px_0_90px_rgba(0,0,0,0.30)] backdrop-blur-2xl transition-[width] duration-300 ${collapsed ? "w-[88px]" : "w-[304px]"}`}>
+      <div className={`flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-white/[0.08] bg-[#121418]/72 p-3 ${collapsed ? "items-center" : ""}`}>
+        <div className={`flex w-full items-center gap-3 px-2 pb-5 ${collapsed ? "justify-center" : "justify-between"}`}>
+          <div className={`min-w-0 ${collapsed ? "text-center" : ""}`}>
+            <div className="inline-flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/[0.10] bg-white/[0.07] px-2 text-sm font-semibold text-white">SR</div>
+            {!collapsed && (
+              <div className="mt-3">
+                <p className="text-[15px] font-semibold tracking-tight text-white">StackRadar</p>
+                <p className="mt-1 text-[11px] leading-4 text-slate-400">Career intelligence from job-market data</p>
+              </div>
+            )}
+          </div>
+          {!collapsed && <button className="rounded-lg border border-white/[0.08] px-2 py-1 text-xs text-slate-400 transition hover:bg-white/[0.06] hover:text-white" onClick={() => setCollapsed(true)}>Collapse</button>}
+        </div>
+        <nav className="grid w-full gap-5 overflow-y-auto pr-1">
+          {groups.map((group) => (
+            <div key={group.title}>
+              {!collapsed && <p className="mb-2 px-2 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">{group.title}</p>}
+              <div className="grid gap-1.5">
+                {group.items.map((lens) => {
+                  const active = page === lens.id;
+                  return (
+                    <button
+                      key={lens.id}
+                      title={collapsed ? `${lens.label}: ${lens.helper}` : undefined}
+                      onClick={() => onPage(lens.id)}
+                      className={`group relative grid min-h-[52px] items-center rounded-xl border text-left transition duration-200 ${
+                        collapsed ? "justify-items-center px-2" : "grid-cols-[1fr_auto] gap-3 px-3"
+                      } ${
+                        active
+                          ? "border-slate-300/22 bg-white/[0.12] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                          : "border-transparent text-slate-400 hover:border-white/[0.08] hover:bg-white/[0.06] hover:text-slate-100"
+                      }`}
+                    >
+                      {collapsed ? (
+                        <span className="text-xs font-semibold tracking-normal">{lens.short}</span>
+                      ) : (
+                        <>
+                          <span className="min-w-0">
+                            <span className="block text-sm font-medium">{lens.label}</span>
+                            <span className={`mt-0.5 block truncate text-[11px] ${active ? "text-slate-300" : "text-slate-500 group-hover:text-slate-400"}`}>{lens.helper}</span>
+                          </span>
+                          <span className={`h-2 w-2 rounded-full ${active ? "bg-slate-200" : "bg-slate-700"}`} />
+                        </>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </nav>
+        <div className={`mt-auto w-full border-t border-white/[0.07] pt-3 ${collapsed ? "text-center" : ""}`}>
+          <div className={`rounded-2xl border border-white/[0.08] bg-[#0d0f12]/80 p-3 ${collapsed ? "grid justify-items-center gap-2" : ""}`}>
+            {!collapsed && <p className="mb-3 text-[10px] uppercase tracking-[0.18em] text-slate-500">System status</p>}
+            <StatusLine collapsed={collapsed} label="Clean jobs" value={cleanJobs ?? "..."} />
+            <StatusLine collapsed={collapsed} label="Quality" value={quality !== undefined ? `${quality}%` : "..."} />
+            <StatusLine collapsed={collapsed} label="AI provider" value={aiProvider ?? "..."} />
+          </div>
+          {collapsed && <button className="mt-3 rounded-lg border border-white/[0.08] px-2 py-1 text-xs text-slate-400 transition hover:bg-white/[0.06] hover:text-white" onClick={() => setCollapsed(false)}>Open</button>}
+        </div>
       </div>
     </aside>
+  );
+}
+
+function StatusLine({ label, value, collapsed }: { label: string; value: React.ReactNode; collapsed: boolean }) {
+  if (collapsed) {
+    return <span title={`${label}: ${value}`} className="h-2.5 w-2.5 rounded-full bg-slate-300/80" />;
+  }
+  return (
+    <div className="flex items-center justify-between gap-3 py-1 text-xs">
+      <span className="text-slate-500">{label}</span>
+      <span className="max-w-[130px] truncate font-medium text-slate-200">{value}</span>
+    </div>
   );
 }

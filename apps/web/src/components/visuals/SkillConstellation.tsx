@@ -5,10 +5,10 @@ export function SkillConstellation({ groups }: { groups: { category: string; ite
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {groups.slice(0, 6).map((group) => (
-        <div key={group.category} className="rounded-[1.25rem] border border-slate-100 bg-slate-50/60 p-4">
+        <div key={group.category} className="rounded-[1.25rem] border border-white/[0.08] bg-[#0d0f12]/72 p-4">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <h3 className="text-sm font-semibold text-slate-900">{group.category}</h3>
-            <span className="text-xs text-slate-400">{group.items.length} skills</span>
+            <h3 className="text-sm font-semibold text-slate-100">{group.category}</h3>
+            <span className="text-xs text-slate-500">{group.items.length} skills</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {group.items.slice(0, 10).map((skill, index) => (

@@ -14,7 +14,7 @@ Early-career candidates often guess which skills matter. StackRadar turns job po
 - PostgreSQL storage for raw jobs, clean jobs, skills, analytics and quality runs
 - Optional Kafka event ingestion for raw job events
 - Optional Airflow DAG for local orchestration
-- Manual AI career intelligence with Mock and Gemini providers
+- Manual AI career intelligence with Mock and OpenRouter providers
 - Messy sample dataset with 105 realistic postings
 - Live API collectors for Remotive and Adzuna
 - Cleaning pipeline for titles, roles, seniority, work mode, location and salary
@@ -43,7 +43,7 @@ flowchart LR
   E --> J
   I --> J
   J --> R["React dashboard"]
-  J --> AI["AI career reports"]
+  J --> AI["Manual AI career reports"]
 ```
 
 ## Tech Stack
@@ -89,6 +89,18 @@ PowerShell:
 ```
 
 By default this fetches Remotive and Adzuna. Remotive needs no key. Adzuna is skipped unless `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` are set.
+
+AI is optional and backend-only. Mock is the default. To try OpenRouter, add these placeholders to `infra/.env` and fill only the key locally:
+
+```bash
+AI_PROVIDER=mock
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=openrouter/auto
+OPENROUTER_SITE_URL=http://localhost:5173
+OPENROUTER_APP_NAME=StackRadar
+```
+
+OpenRouter is never called on page load, navigation, fit analysis or report history. It is used only after selecting OpenRouter and clicking a manual Generate action in the Career Plan flow.
 
 Kafka demo mode publishes events first, then consumes them into Postgres:
 

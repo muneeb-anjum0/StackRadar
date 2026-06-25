@@ -7,10 +7,8 @@ from datetime import datetime, timedelta
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.models.analytics import AiReport
-
-
-CACHE_HOURS = 24
 
 
 def input_hash(report_type: str, provider: str, context: dict) -> str:
@@ -19,7 +17,7 @@ def input_hash(report_type: str, provider: str, context: dict) -> str:
 
 
 def recent_report(db: Session, report_type: str, provider: str, digest: str) -> AiReport | None:
-    cutoff = datetime.utcnow() - timedelta(hours=CACHE_HOURS)
+    cutoff = datetime.utcnow() - timedelta(hours=get_settings().ai_report_cache_hours)
     return db.scalar(
         select(AiReport)
         .where(

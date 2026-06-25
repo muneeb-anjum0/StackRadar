@@ -5,11 +5,9 @@ import { SignalBadge } from "../../components/primitives/SignalBadge";
 import { ReportCard } from "../../components/visuals/ReportCard";
 
 const reportTypes: { type: ReportType; label: string }[] = [
-  { type: "career_report", label: "Career Report" },
-  { type: "learning_roadmap", label: "4-Week Roadmap" },
-  { type: "project_suggestions", label: "Project Ideas" },
-  { type: "role_fit", label: "Role Fit" },
-  { type: "skill_gap_brief", label: "Skill Gap Brief" }
+  { type: "career_report", label: "Step 2: Career Brief" },
+  { type: "learning_roadmap", label: "Step 3: 4-Week Roadmap" },
+  { type: "project_suggestions", label: "Step 4: Portfolio Project Plan" }
 ];
 
 export function AiBriefStudio({
@@ -43,7 +41,8 @@ export function AiBriefStudio({
   onGenerate: (type: ReportType) => void;
   onSelect: (report: AiReport) => void;
 }) {
-  const needsGeminiConfirm = provider === "gemini" && !confirmed;
+  const needsOpenRouterConfirm = provider === "openrouter" && !confirmed;
+  const providerLabel = provider === "openrouter" ? "OpenRouter" : "Mock";
   return (
     <div className="rounded-[1.8rem] border border-slate-200 bg-white/90 p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)]">
       <div className="grid gap-5 xl:grid-cols-[1fr_320px]">
@@ -51,15 +50,15 @@ export function AiBriefStudio({
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.16em] text-slate-400">AI Brief Studio</p>
-              <h2 className="mt-2 text-2xl font-semibold text-slate-950">Manual reports grounded in this fit analysis</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-500">Provider: {provider === "gemini" ? "Gemini selected, quota will be used" : "Mock selected, local and free"}</p>
+              <h2 className="mt-2 text-2xl font-semibold text-slate-950">Turn this fit analysis into a career plan</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-500">Provider: {provider === "openrouter" ? "OpenRouter selected, quota/credits will be used only when you click Generate" : "Mock selected, local and deterministic"}</p>
             </div>
-            <SegmentedControl<AiProvider> value={provider} onChange={onProvider} options={[{ value: "mock", label: "Mock" }, { value: "gemini", label: "Gemini" }]} />
+            <SegmentedControl<AiProvider> value={provider} onChange={onProvider} options={[{ value: "mock", label: "Mock" }, { value: "openrouter", label: "OpenRouter" }]} />
           </div>
-          {provider === "gemini" && (
+          {provider === "openrouter" && (
             <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-              Gemini uses your API quota. Generate one report now?
-              {!confirmed && <SoftButton className="ml-3" variant="quiet" onClick={onConfirm}>Confirm Gemini</SoftButton>}
+              OpenRouter uses your API quota/credits. StackRadar will only call it when you click Generate.
+              {!confirmed && <SoftButton className="ml-3" variant="quiet" onClick={onConfirm}>Confirm OpenRouter</SoftButton>}
               {cooldownRemaining > 0 && <span className="ml-3">Cooldown: {cooldownRemaining}s</span>}
             </div>
           )}
@@ -67,11 +66,11 @@ export function AiBriefStudio({
             {reportTypes.map((report) => (
               <SoftButton
                 key={report.type}
-                variant={activeType === report.type ? "selected" : provider === "gemini" ? "unselected" : "quiet"}
-                disabled={loading || needsGeminiConfirm || cooldownRemaining > 0}
+                variant={activeType === report.type ? "selected" : provider === "openrouter" ? "unselected" : "quiet"}
+                disabled={loading || needsOpenRouterConfirm || cooldownRemaining > 0}
                 onClick={() => onGenerate(report.type)}
               >
-                Generate {report.label} with {provider === "gemini" ? "Gemini" : "Mock"}
+                Generate {report.label} with {providerLabel}
               </SoftButton>
             ))}
           </div>
@@ -82,11 +81,11 @@ export function AiBriefStudio({
         </div>
         <div>
           <div className="rounded-[1.35rem] border border-slate-200 bg-slate-50/70 p-4">
-            <p className="text-sm font-semibold text-slate-950">Provider safety</p>
-            <div className="mt-3 grid gap-2 text-sm text-slate-500">
-              <p>Gemini configured: {status?.gemini_configured ? "yes" : "no"}</p>
+              <p className="text-sm font-semibold text-slate-950">Provider safety</p>
+              <div className="mt-3 grid gap-2 text-sm text-slate-500">
+              <p>OpenRouter configured: {status?.openrouter_configured ? "yes" : "no"}</p>
               <p>Mock reports: {usage?.mock_reports_total ?? 0}</p>
-              <p>Gemini reports: {usage?.gemini_reports_total ?? 0}</p>
+              <p>OpenRouter reports: {usage?.openrouter_reports_total ?? 0}</p>
               <p>AI used: Yes, only after clicking generate.</p>
             </div>
           </div>
@@ -103,7 +102,7 @@ function ReportReader({ report }: { report: AiReport }) {
   return (
     <div>
       <div className="mb-4 flex flex-wrap gap-2">
-        <SignalBadge tone={report.provider === "gemini" ? "warn" : "neutral"}>Generated by: {report.provider}</SignalBadge>
+        <SignalBadge tone={report.provider === "openrouter" ? "warn" : "neutral"}>Generated by: {report.provider}</SignalBadge>
         <SignalBadge>AI used: Yes</SignalBadge>
         <SignalBadge>Source data: StackRadar analytics</SignalBadge>
         <SignalBadge tone={report.reused_from_cache ? "good" : "neutral"}>Cached: {report.reused_from_cache ? "Yes" : "No"}</SignalBadge>

@@ -14,25 +14,25 @@ const endpointByType: Record<ReportType, string> = {
 
 export function useAiGenerate(cooldownSeconds = 20) {
   const queryClient = useQueryClient();
-  const [lastGeminiAt, setLastGeminiAt] = useState<number | null>(null);
-  const [geminiSessionCount, setGeminiSessionCount] = useState(0);
+  const [lastOpenRouterAt, setLastOpenRouterAt] = useState<number | null>(null);
+  const [openRouterSessionCount, setOpenRouterSessionCount] = useState(0);
   const [activeType, setActiveType] = useState<ReportType | null>(null);
 
   const cooldownRemaining = useMemo(() => {
-    if (!lastGeminiAt) return 0;
-    return Math.max(0, cooldownSeconds - Math.floor((Date.now() - lastGeminiAt) / 1000));
-  }, [cooldownSeconds, lastGeminiAt]);
+    if (!lastOpenRouterAt) return 0;
+    return Math.max(0, cooldownSeconds - Math.floor((Date.now() - lastOpenRouterAt) / 1000));
+  }, [cooldownSeconds, lastOpenRouterAt]);
 
   const mutation = useMutation({
     mutationFn: async ({ reportType, payload }: { reportType: ReportType; payload: AiReportRequest }) => {
-      if (payload.provider === "gemini" && cooldownRemaining > 0) {
-        throw new Error(`Gemini cooldown is active. Try again in ${cooldownRemaining} seconds.`);
+      if (payload.provider === "openrouter" && cooldownRemaining > 0) {
+        throw new Error(`OpenRouter cooldown is active. Try again in ${cooldownRemaining} seconds.`);
       }
       setActiveType(reportType);
       const report = await api.post<AiReport>(endpointByType[reportType], payload);
-      if (payload.provider === "gemini" && !report.reused_from_cache) {
-        setLastGeminiAt(Date.now());
-        setGeminiSessionCount((count) => count + 1);
+      if (payload.provider === "openrouter" && !report.reused_from_cache) {
+        setLastOpenRouterAt(Date.now());
+        setOpenRouterSessionCount((count) => count + 1);
       }
       return report;
     },
@@ -46,8 +46,8 @@ export function useAiGenerate(cooldownSeconds = 20) {
   return {
     ...mutation,
     activeType,
-    geminiSessionCount,
+    openRouterSessionCount,
     cooldownRemaining,
-    canUseProvider: (provider: AiProvider) => provider !== "gemini" || cooldownRemaining === 0
+    canUseProvider: (provider: AiProvider) => provider !== "openrouter" || cooldownRemaining === 0
   };
 }

@@ -5,8 +5,8 @@ const lenses: { id: Page; label: string; helper: string }[] = [
   { id: "skills", label: "Skills", helper: "pressure" },
   { id: "roles", label: "Roles", helper: "blueprint" },
   { id: "jobs", label: "Jobs", helper: "evidence" },
-  { id: "gap", label: "Fit", helper: "personal" },
-  { id: "intelligence", label: "AI Briefs", helper: "manual" },
+  { id: "gap", label: "Career Plan", helper: "guided" },
+  { id: "intelligence", label: "AI Reports", helper: "manual" },
   { id: "quality", label: "Pipeline", helper: "trust" }
 ];
 

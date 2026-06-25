@@ -6,7 +6,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     ...init
   });
   if (!response.ok) {
-    throw new Error(`API request failed: ${response.status}`);
+    const detail = await response.json().catch(() => null);
+    const message = typeof detail?.detail === "string" ? detail.detail : `API request failed: ${response.status}`;
+    throw new Error(message);
   }
   return response.json();
 }

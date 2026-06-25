@@ -13,6 +13,13 @@ import { FitExplainer } from "./FitExplainer";
 import { FitInputPanel } from "./FitInputPanel";
 import { SkillGapPath } from "./SkillGapPath";
 
+const planSteps = [
+  { label: "Fit", detail: "deterministic" },
+  { label: "Brief", detail: "manual AI" },
+  { label: "Roadmap", detail: "manual AI" },
+  { label: "Project", detail: "manual AI" }
+];
+
 export function FitLens() {
   const [role, setRole] = useState("Backend Developer");
   const [skills, setSkills] = useState("React, Node.js, MongoDB");
@@ -37,10 +44,19 @@ export function FitLens() {
   return (
     <div className="space-y-7">
       <LensHeader
-        eyebrow="Fit Lens"
-        title="How close am I, and what is my next move?"
-        subtitle="Deterministic fit stays fast and non-AI. AI briefs are a separate manual studio with Mock default and Gemini quota warnings."
+        eyebrow="Career Plan Lens"
+        title="Analyze fit, then build the next four weeks"
+        subtitle="Step 1 is deterministic and uses no AI. Steps 2-4 are manual reports with Mock default and OpenRouter quota warnings."
       />
+      <div className="grid gap-3 rounded-[1.5rem] border border-slate-200 bg-white/90 p-3 md:grid-cols-4">
+        {planSteps.map((step, index) => (
+          <div key={step.label} className={`rounded-2xl border p-4 ${index === 0 && !fit.analysis.data ? "border-slate-950 bg-slate-950 text-white" : fit.analysis.data && index <= 3 ? "border-slate-200 bg-slate-50/80 text-slate-950" : "border-slate-100 bg-white text-slate-500"}`}>
+            <p className="text-xs uppercase tracking-[0.16em] opacity-60">Step {index + 1}</p>
+            <p className="mt-1 text-lg font-semibold">{step.label}</p>
+            <p className="text-xs opacity-70">{step.detail}</p>
+          </div>
+        ))}
+      </div>
       <FitInputPanel
         role={role}
         skills={skills}
@@ -66,8 +82,8 @@ export function FitLens() {
           <AiBriefStudio
             provider={provider.provider}
             onProvider={provider.setProvider}
-            confirmed={provider.geminiConfirmed}
-            onConfirm={provider.confirmGemini}
+            confirmed={provider.openRouterConfirmed}
+            onConfirm={provider.confirmOpenRouter}
             status={aiStatus.data}
             usage={aiUsage.data}
             reports={aiReports.data ?? []}

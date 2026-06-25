@@ -8,29 +8,6 @@ This version is a portfolio-grade local data platform, not a live SaaS. The stru
 
 Early-career candidates often guess which skills matter. StackRadar turns job posts into evidence: demanded skills, role patterns, salary coverage, remote availability and data quality signals.
 
-## Features
-
-- Dark graphite career operating system UI with seven product lenses
-- Market Lens: strongest role, skill, access and confidence signals
-- Skills Lens: skill demand ranking, category groups and portfolio signals
-- Roles Lens: target-role blueprint with core stack, support stack and market conditions
-- Jobs Lens: compact evidence rows with classification confidence and source details
-- Career Plan Lens: deterministic fit analysis plus manual Mock/OpenRouter report generation
-- AI Reports Lens: report archive with provider, cache and quota metadata
-- Pipeline Lens: data trust center for freshness, cleanliness and known limits
-- FastAPI backend with SQLAlchemy and Pydantic schemas
-- PostgreSQL storage for raw jobs, clean jobs, skills, analytics and quality runs
-- Optional Kafka event ingestion for raw job events
-- Optional Airflow DAG for local orchestration
-- Manual AI career intelligence with Mock and OpenRouter providers
-- Messy sample dataset with 105 realistic postings
-- Live API collectors for Remotive and Adzuna
-- Cleaning pipeline for titles, roles, seniority, work mode, location and salary
-- Dictionary-based skill extraction with normalized aliases
-- Duplicate detection using source IDs and content fingerprints
-- Analytics endpoints for overview, skills, roles, trends and skill gaps
-- Career intelligence workspace with source freshness, source filters and API-backed analytics
-- Docker Compose local setup with Postgres, Redis, Kafka, API and web app
 
 ## Architecture
 

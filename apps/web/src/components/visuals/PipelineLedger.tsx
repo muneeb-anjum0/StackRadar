@@ -4,7 +4,7 @@ import { SignalBadge } from "../primitives/SignalBadge";
 export function PipelineLedger({ sources, health }: { sources: SourceItem[]; health: SourceHealth[] }) {
   const healthBySource = new Map(health.map((item) => [item.source, item]));
   return (
-    <div className="divide-y divide-white/[0.07]">
+    <div className="divide-y divide-[#20242b]">
       {sources.map((source) => {
         const state = healthBySource.get(source.source);
         return (

@@ -5,13 +5,13 @@ import { SignalBadge } from "../../components/primitives/SignalBadge";
 export function JobPreview({ job }: { job?: Job }) {
   if (!job) {
     return (
-      <div className="rounded-[1.5rem] border border-dashed border-white/[0.10] bg-white/[0.04] p-6 text-sm text-slate-400">
+      <div className="rounded-[1.5rem] border border-dashed border-[#252b34] bg-[#090b0e] p-6 text-sm text-slate-400">
         Select an evidence row to inspect the source posting signal.
       </div>
     );
   }
   return (
-    <aside className="sticky top-6 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.5rem] border border-white/[0.08] bg-[#121418]/92 p-5">
+    <aside className="sticky top-6 h-[calc(100vh-3rem)] overflow-y-auto rounded-[1.5rem] border border-[#20242b] bg-[#0b0d10] p-5">
       <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Evidence preview</p>
       <h2 className="mt-4 text-xl font-semibold text-slate-100">{job.raw_title ?? job.normalized_title}</h2>
       <p className="mt-2 text-sm leading-6 text-slate-400">Normalized role: {job.normalized_role}</p>
@@ -24,7 +24,7 @@ export function JobPreview({ job }: { job?: Job }) {
         <PreviewFact label="Source" value={job.source} />
         <PreviewFact label="Posted" value={shortDate(job.posted_at)} />
       </div>
-      <div className="mt-5 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+      <div className="mt-5 rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
         <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Why this label</p>
         <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-400">
           {job.classification_notes.map((note) => <li key={note}>{note}</li>)}
@@ -38,7 +38,7 @@ export function JobPreview({ job }: { job?: Job }) {
 
 function PreviewFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="flex justify-between gap-3 border-b border-white/[0.07] pb-2">
+    <div className="flex justify-between gap-3 border-b border-[#20242b] pb-2">
       <span className="text-slate-500">{label}</span>
       <span className="text-right font-medium text-slate-200">{value}</span>
     </div>

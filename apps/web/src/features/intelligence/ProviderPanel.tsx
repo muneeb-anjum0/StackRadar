@@ -4,7 +4,7 @@ import { SignalBadge } from "../../components/primitives/SignalBadge";
 
 export function ProviderPanel({ provider, onProvider, status }: { provider: AiProvider | "all"; onProvider: (provider: AiProvider | "all") => void; status?: AiStatus }) {
   return (
-    <div className="rounded-[1.5rem] border border-white/[0.08] bg-[#121418]/72 p-5">
+    <div className="rounded-[1.5rem] border border-[#20242b] bg-[#0b0d10] p-5">
       <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Provider ledger</p>
       <h2 className="mt-2 text-xl font-semibold text-slate-100">AI is manual and visible</h2>
       <div className="mt-4">

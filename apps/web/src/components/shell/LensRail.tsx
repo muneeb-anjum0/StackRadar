@@ -40,19 +40,18 @@ export function LensRail({
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <aside className={`sticky top-0 z-20 h-screen shrink-0 border-r border-white/[0.08] bg-[#08090b]/94 p-3 shadow-[24px_0_90px_rgba(0,0,0,0.30)] backdrop-blur-2xl transition-[width] duration-300 ${collapsed ? "w-[88px]" : "w-[304px]"}`}>
-      <div className={`flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-white/[0.08] bg-[#121418]/72 p-3 ${collapsed ? "items-center" : ""}`}>
-        <div className={`flex w-full items-center gap-3 px-2 pb-5 ${collapsed ? "justify-center" : "justify-between"}`}>
+    <aside className={`sticky top-0 z-20 h-screen shrink-0 border-r border-[#20242b] bg-[#050608] p-3 ${collapsed ? "w-[76px]" : "w-[304px]"}`}>
+      <div className={`flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-[#20242b] bg-[#080a0d] p-3 ${collapsed ? "items-center" : ""}`}>
+        <div className={`flex w-full items-start gap-3 px-2 pb-5 ${collapsed ? "justify-center" : "justify-between"}`}>
           <div className={`min-w-0 ${collapsed ? "text-center" : ""}`}>
-            <div className="inline-flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/[0.10] bg-white/[0.07] px-2 text-sm font-semibold text-white">SR</div>
             {!collapsed && (
-              <div className="mt-3">
+              <div>
                 <p className="text-[15px] font-semibold tracking-tight text-white">StackRadar</p>
                 <p className="mt-1 text-[11px] leading-4 text-slate-400">Career intelligence from job-market data</p>
               </div>
             )}
           </div>
-          {!collapsed && <button className="rounded-lg border border-white/[0.08] px-2 py-1 text-xs text-slate-400 transition hover:bg-white/[0.06] hover:text-white" onClick={() => setCollapsed(true)}>Collapse</button>}
+          {!collapsed && <button className="rounded-lg border border-[#252b34] px-2 py-1 text-xs text-slate-400 hover:bg-[#101318] hover:text-white" onClick={() => setCollapsed(true)}>Collapse</button>}
         </div>
         <nav className="grid w-full gap-5 overflow-y-auto pr-1">
           {groups.map((group) => (
@@ -66,12 +65,12 @@ export function LensRail({
                       key={lens.id}
                       title={collapsed ? `${lens.label}: ${lens.helper}` : undefined}
                       onClick={() => onPage(lens.id)}
-                      className={`group relative grid min-h-[52px] items-center rounded-xl border text-left transition duration-200 ${
+                      className={`group relative grid min-h-[52px] items-center rounded-xl border text-left ${
                         collapsed ? "justify-items-center px-2" : "grid-cols-[1fr_auto] gap-3 px-3"
                       } ${
                         active
-                          ? "border-slate-300/22 bg-white/[0.12] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
-                          : "border-transparent text-slate-400 hover:border-white/[0.08] hover:bg-white/[0.06] hover:text-slate-100"
+                          ? "border-[#3a404a] bg-[#151a20] text-white"
+                          : "border-transparent text-slate-400 hover:border-[#252b34] hover:bg-[#101318] hover:text-slate-100"
                       }`}
                     >
                       {collapsed ? (
@@ -92,14 +91,14 @@ export function LensRail({
             </div>
           ))}
         </nav>
-        <div className={`mt-auto w-full border-t border-white/[0.07] pt-3 ${collapsed ? "text-center" : ""}`}>
-          <div className={`rounded-2xl border border-white/[0.08] bg-[#0d0f12]/80 p-3 ${collapsed ? "grid justify-items-center gap-2" : ""}`}>
+        <div className={`mt-auto w-full border-t border-[#20242b] pt-3 ${collapsed ? "text-center" : ""}`}>
+          <div className={`rounded-2xl border border-[#20242b] bg-[#050608] p-3 ${collapsed ? "grid justify-items-center gap-2" : ""}`}>
             {!collapsed && <p className="mb-3 text-[10px] uppercase tracking-[0.18em] text-slate-500">System status</p>}
             <StatusLine collapsed={collapsed} label="Clean jobs" value={cleanJobs ?? "..."} />
             <StatusLine collapsed={collapsed} label="Quality" value={quality !== undefined ? `${quality}%` : "..."} />
             <StatusLine collapsed={collapsed} label="AI provider" value={aiProvider ?? "..."} />
           </div>
-          {collapsed && <button className="mt-3 rounded-lg border border-white/[0.08] px-2 py-1 text-xs text-slate-400 transition hover:bg-white/[0.06] hover:text-white" onClick={() => setCollapsed(false)}>Open</button>}
+          {collapsed && <button className="mt-3 rounded-lg border border-[#252b34] px-2 py-1 text-xs text-slate-400 hover:bg-[#101318] hover:text-white" onClick={() => setCollapsed(false)}>Open</button>}
         </div>
       </div>
     </aside>

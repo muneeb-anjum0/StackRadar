@@ -2,7 +2,7 @@ import { ProgressLine } from "../primitives/ProgressLine";
 
 export function FitMeter({ value, summary }: { value: number; summary: string }) {
   return (
-    <div className="rounded-[1.8rem] border border-white/[0.09] bg-[#151820]/92 p-7 shadow-[0_28px_80px_rgba(0,0,0,0.28)]">
+    <div className="rounded-[1.5rem] border border-[#242933] bg-[#0d1014] p-7">
       <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Deterministic fit</p>
       <div className="mt-5 flex items-end gap-3">
         <p className="text-7xl font-semibold leading-none text-slate-50">{value}%</p>

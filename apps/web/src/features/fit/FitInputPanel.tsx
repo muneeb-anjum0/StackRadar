@@ -20,7 +20,7 @@ export function FitInputPanel({
   onAnalyze: () => void;
 }) {
   return (
-    <div className="rounded-[1.5rem] border border-white/[0.08] bg-[#121418]/72 p-4">
+    <div className="rounded-[1.25rem] border border-[#20242b] bg-[#0b0d10] p-4">
       <div className="grid gap-3 lg:grid-cols-[220px_1fr_auto]">
         <SelectField value={role} onChange={(event) => onRole(event.target.value)} options={roles} />
         <TextField value={skills} onChange={(event) => onSkills(event.target.value)} placeholder="React, Node.js, MongoDB" />

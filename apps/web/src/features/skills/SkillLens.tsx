@@ -61,7 +61,7 @@ function findCategory(categories: { category: string; items: { name: string }[] 
 
 function DecisionFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+    <div className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
       <p className="text-xs text-slate-500">{label}</p>
       <p className="mt-2 font-semibold text-slate-100">{value}</p>
     </div>

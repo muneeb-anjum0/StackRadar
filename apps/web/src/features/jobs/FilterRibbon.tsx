@@ -36,7 +36,7 @@ export function FilterRibbon({
   onReset: () => void;
 }) {
   return (
-    <div className="rounded-[1.35rem] border border-white/[0.08] bg-[#121418]/72 p-3">
+    <div className="rounded-[1.25rem] border border-[#20242b] bg-[#0b0d10] p-3">
       <div className="grid gap-3 lg:grid-cols-[1fr_repeat(5,150px)_auto]">
       <TextField value={query} onChange={(event) => onChange({ query: event.target.value })} placeholder="Search job evidence" />
       <SelectField value={role} onChange={(event) => onChange({ role: event.target.value })} options={roleOptions} placeholder="Role" />
@@ -58,7 +58,7 @@ export function FilterRibbon({
 
 function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (checked: boolean) => void }) {
   return (
-    <label className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition ${checked ? "border-slate-300/30 bg-white/[0.12] text-white" : "border-white/[0.08] bg-white/[0.04] text-slate-400"}`}>
+    <label className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium ${checked ? "border-[#3a404a] bg-[#151a20] text-white" : "border-[#252b34] bg-[#07090b] text-slate-400"}`}>
       <input className="sr-only" type="checkbox" checked={checked} onChange={(event) => onChange(event.target.checked)} />
       <span className={`h-2 w-2 rounded-full ${checked ? "bg-emerald-300" : "bg-slate-600"}`} />
       {label}

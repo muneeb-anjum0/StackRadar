@@ -11,7 +11,7 @@ export function DemandBars({ items, limit = 8 }: { items: CountItem[]; limit?: n
               <span className="truncate font-medium text-slate-200">{item.name}</span>
               <span className="text-slate-500">{item.percentage}%</span>
             </div>
-            <div className="h-2 rounded-full bg-white/[0.07]">
+            <div className="h-2 rounded-full bg-[#07090b]">
               <div className="h-full rounded-full bg-slate-300" style={{ width: `${(item.count / max) * 100}%` }} />
             </div>
           </div>

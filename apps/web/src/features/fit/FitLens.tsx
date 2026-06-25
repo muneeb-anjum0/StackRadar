@@ -48,9 +48,9 @@ export function FitLens() {
         title="Career Plan"
         subtitle="Choose a target role, enter your skills, then get a market-backed next move."
       />
-      <div className="grid gap-3 rounded-[1.5rem] border border-white/[0.08] bg-[#121418]/72 p-3 md:grid-cols-4">
+      <div className="grid gap-3 rounded-[1.25rem] border border-[#20242b] bg-[#0b0d10] p-3 md:grid-cols-4">
         {planSteps.map((step, index) => (
-          <div key={step.label} className={`rounded-2xl border p-4 ${index === 0 && !fit.analysis.data ? "border-slate-300/30 bg-white/[0.12] text-white" : fit.analysis.data && index <= 3 ? "border-white/[0.08] bg-white/[0.07] text-slate-100" : "border-white/[0.06] bg-white/[0.03] text-slate-500"}`}>
+          <div key={step.label} className={`rounded-2xl border p-4 ${index === 0 && !fit.analysis.data ? "border-[#3a404a] bg-[#151a20] text-white" : fit.analysis.data && index <= 3 ? "border-[#252b34] bg-[#101318] text-slate-100" : "border-[#20242b] bg-[#07090b] text-slate-500"}`}>
             <p className="text-xs uppercase tracking-[0.16em] opacity-60">Step {index + 1}</p>
             <p className="mt-1 text-lg font-semibold">{step.label}</p>
             <p className="text-xs opacity-70">{step.detail}</p>

@@ -8,8 +8,8 @@ export function EvidenceRow({ job, selected, onSelect }: { job: Job; selected: b
   return (
     <button
       onClick={() => onSelect(job)}
-      className={`grid w-full gap-4 rounded-2xl border p-4 text-left transition md:grid-cols-[1fr_190px] ${
-        selected ? "border-slate-300/30 bg-white/[0.10]" : "border-white/[0.08] bg-white/[0.04] hover:border-white/14 hover:bg-white/[0.07]"
+      className={`grid w-full gap-4 rounded-2xl border p-4 text-left md:grid-cols-[1fr_190px] ${
+        selected ? "border-[#3a404a] bg-[#151a20]" : "border-[#252b34] bg-[#090b0e] hover:border-[#343b46] hover:bg-[#101318]"
       }`}
     >
       <div className="min-w-0">

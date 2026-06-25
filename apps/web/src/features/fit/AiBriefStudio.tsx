@@ -44,7 +44,7 @@ export function AiBriefStudio({
   const needsOpenRouterConfirm = provider === "openrouter" && !confirmed;
   const providerLabel = provider === "openrouter" ? "OpenRouter" : "Mock";
   return (
-    <div className="rounded-[1.8rem] border border-white/[0.09] bg-[#151820]/92 p-6 shadow-[0_28px_80px_rgba(0,0,0,0.28)]">
+    <div className="rounded-[1.5rem] border border-[#242933] bg-[#0d1014] p-6">
       <div className="grid gap-5 xl:grid-cols-[1fr_320px]">
         <div>
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -75,12 +75,12 @@ export function AiBriefStudio({
             ))}
           </div>
           {error && <p className="mt-4 text-sm text-rose-300">{error}</p>}
-          <div className="mt-6 min-h-[260px] rounded-[1.35rem] border border-white/[0.08] bg-[#0d0f12]/72 p-5">
+          <div className="mt-6 min-h-[260px] rounded-[1.25rem] border border-[#20242b] bg-[#07090b] p-5">
             {loading ? <p className="text-sm text-slate-400">Generating one manual brief...</p> : selected ? <ReportReader report={selected} /> : <p className="text-sm text-slate-400">Choose a report type to generate a manual AI brief.</p>}
           </div>
         </div>
         <div>
-          <div className="rounded-[1.35rem] border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+          <div className="rounded-[1.25rem] border border-[#20242b] bg-[#07090b] p-4">
               <p className="text-sm font-semibold text-slate-100">Provider safety</p>
               <div className="mt-3 grid gap-2 text-sm text-slate-400">
               <p>OpenRouter configured: {status?.openrouter_configured ? "yes" : "no"}</p>

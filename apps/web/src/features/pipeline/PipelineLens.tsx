@@ -46,7 +46,7 @@ export function PipelineLens() {
           <h2 className="mb-4 text-xl font-semibold text-slate-100">Issue pulse</h2>
           <div className="space-y-3">
             {(issues.data ?? []).slice(0, 5).map((issue) => (
-              <div key={issue.title} className="flex items-center justify-between gap-3 border-b border-white/[0.07] pb-3">
+              <div key={issue.title} className="flex items-center justify-between gap-3 border-b border-[#20242b] pb-3">
                 <span className="text-sm text-slate-400">{issue.title}</span>
                 <span className="font-semibold text-slate-100">{issue.count}</span>
               </div>
@@ -70,7 +70,7 @@ export function PipelineLens() {
 
 function TrustFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+    <div className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
       <p className="text-xs text-slate-500">{label}</p>
       <p className="mt-1 text-xl font-semibold text-slate-100">{value}</p>
     </div>

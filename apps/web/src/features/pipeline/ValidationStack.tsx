@@ -5,7 +5,7 @@ export function ValidationStack({ checks }: { checks: ValidationCheck[] }) {
   return (
     <div className="space-y-3">
       {checks.map((check) => (
-        <div key={check.check_name} className="rounded-2xl border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+        <div key={check.check_name} className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm font-medium capitalize text-slate-100">{check.check_name.replace(/_/g, " ")}</p>
             <SignalBadge tone={check.status === "passed" ? "good" : "warn"}>{check.status}</SignalBadge>

@@ -12,7 +12,7 @@ export function SkillGapPath({ matched, missing, next }: { matched: string[]; mi
 
 function PathColumn({ title, label, items, tone }: { title: string; label: string; items: string[]; tone: "good" | "neutral" | "strong" }) {
   return (
-    <div className="rounded-[1.35rem] border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+    <div className="rounded-[1.25rem] border border-[#20242b] bg-[#07090b] p-4">
       <p className="text-xs uppercase tracking-[0.14em] text-slate-500">{label}</p>
       <h3 className="mt-2 font-semibold text-slate-100">{title}</h3>
       <div className="mt-4 flex flex-wrap gap-2">

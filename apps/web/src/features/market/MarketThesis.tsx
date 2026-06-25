@@ -5,7 +5,7 @@ export function MarketThesis({ data }: { data: Overview }) {
   const role = data.most_common_role ?? "Unknown role";
   const skill = data.most_demanded_skill ?? "Unknown skill";
   return (
-    <div className="rounded-[2rem] border border-white/[0.10] bg-[#1b1f27]/88 p-8 shadow-[0_35px_110px_rgba(0,0,0,0.34)]">
+    <div className="rounded-[1.5rem] border border-[#242933] bg-[#0d1014] p-8">
       <div className="flex flex-wrap gap-2">
         <SignalBadge tone="strong">Market thesis</SignalBadge>
         <SignalBadge>{data.total_jobs} usable jobs</SignalBadge>

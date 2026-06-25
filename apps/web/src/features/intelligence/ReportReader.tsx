@@ -3,7 +3,7 @@ import { SignalBadge } from "../../components/primitives/SignalBadge";
 
 export function ReportReader({ report }: { report: AiReport | null }) {
   return (
-    <div className="min-h-[520px] rounded-[1.8rem] border border-white/[0.09] bg-[#151820]/92 p-7 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
+    <div className="min-h-[520px] rounded-[1.5rem] border border-[#242933] bg-[#0d1014] p-7">
       {!report ? (
         <p className="text-sm text-slate-400">Select a report to read it here.</p>
       ) : (

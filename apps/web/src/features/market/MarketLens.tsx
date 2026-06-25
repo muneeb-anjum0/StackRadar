@@ -42,7 +42,7 @@ export function MarketLens() {
           <button
             key={item}
             onClick={() => setScope(item)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${scope === item ? "border-slate-300/30 bg-white/[0.12] text-white" : "border-white/[0.08] bg-white/[0.04] text-slate-400 hover:bg-white/[0.08] hover:text-slate-100"}`}
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium ${scope === item ? "border-[#3a404a] bg-[#151a20] text-white" : "border-[#252b34] bg-[#07090b] text-slate-400 hover:bg-[#101318] hover:text-slate-100"}`}
           >
             {item}
           </button>

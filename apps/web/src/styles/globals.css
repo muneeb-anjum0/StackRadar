@@ -16,24 +16,25 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
-  background:
-    radial-gradient(circle at 18% 8%, rgba(124, 140, 163, 0.14), transparent 28rem),
-    linear-gradient(135deg, #08090b 0%, #0b0d10 46%, #0d0f12 100%);
+  background: #050608;
 }
 
 * {
   box-sizing: border-box;
+  animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  transition: none !important;
 }
 
 .glass {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(18, 20, 24, 0.82);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(18px);
+  border: 1px solid #20242b;
+  background: #0b0d10;
+  backdrop-filter: none;
 }
 
 ::selection {
-  background: rgba(170, 180, 195, 0.28);
+  background: #2b313a;
   color: #ffffff;
 }
 

@@ -8,11 +8,11 @@ export function RoleBlueprint({ role }: { role: RoleAnalytics }) {
   const salarySignal = role.salary_min && role.salary_max ? salary(role.salary_min, role.salary_max) : "Limited salary signal";
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
-      <div className="rounded-[1.5rem] border border-white/[0.08] bg-[#0d0f12]/72 p-5">
+      <div className="rounded-[1.5rem] border border-[#20242b] bg-[#07090b] p-5">
         <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Core stack</p>
         <div className="mt-5 grid gap-3">
           {core.map((skill) => (
-            <div key={skill.name} className="flex items-center justify-between border-b border-white/[0.07] pb-3">
+            <div key={skill.name} className="flex items-center justify-between border-b border-[#20242b] pb-3">
               <span className="font-medium text-slate-100">{skill.name}</span>
               <span className="text-sm text-slate-500">{skill.percentage}%</span>
             </div>
@@ -34,7 +34,7 @@ export function RoleBlueprint({ role }: { role: RoleAnalytics }) {
 
 function BlueprintFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0d0f12]/72 p-4">
+    <div className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
       <p className="text-xs text-slate-500">{label}</p>
       <p className="mt-1 font-semibold text-slate-100">{value}</p>
     </div>

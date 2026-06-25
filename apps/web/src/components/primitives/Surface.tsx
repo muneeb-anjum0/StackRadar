@@ -1,8 +1,8 @@
 const levels = {
-  1: "border-transparent bg-transparent shadow-none",
-  2: "border-white/[0.07] bg-[#121418]/88 shadow-[0_22px_70px_rgba(0,0,0,0.20)]",
-  3: "border-white/[0.09] bg-[#151820]/92 shadow-[0_28px_90px_rgba(0,0,0,0.28)]",
-  4: "border-white/[0.10] bg-[#1b1f27]/94 shadow-[0_34px_110px_rgba(0,0,0,0.34)]"
+  1: "border-transparent bg-transparent",
+  2: "border-[#20242b] bg-[#0b0d10]",
+  3: "border-[#242933] bg-[#0d1014]",
+  4: "border-[#2a303a] bg-[#11151a]"
 };
 
 export function Surface({
@@ -14,5 +14,5 @@ export function Surface({
   className?: string;
   children: React.ReactNode;
 }) {
-  return <section className={`rounded-[1.45rem] border backdrop-blur-xl ${levels[level]} ${className}`}>{children}</section>;
+  return <section className={`rounded-[1.25rem] border ${levels[level]} ${className}`}>{children}</section>;
 }

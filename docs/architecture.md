@@ -8,6 +8,6 @@ The shared pipeline matters because the same cleaned intelligence can support ma
 
 Airflow is available as an optional local orchestration profile. It runs the same collector, consumer, cleaner, analytics and quality modules used by the scripts, so the portfolio-grade path does not fork the business logic.
 
-AI career reports are manual backend actions. Mock mode is default and works without keys. Gemini mode is opt-in, uses backend environment variables only, and receives compact analytics summaries rather than raw job dumps.
+AI career reports are manual backend actions. Mock mode is default and works without keys. OpenRouter mode is opt-in, uses backend environment variables only, and receives compact analytics summaries rather than raw job dumps. The Career Plan flow keeps deterministic fit analysis separate from manual AI briefs, roadmaps and project plans.
 
 Future SaaS additions can include auth, organizations, saved searches, payment webhooks, BYOK AI keys, managed AI calls and hosted schedulers.

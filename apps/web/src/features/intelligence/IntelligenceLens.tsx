@@ -23,9 +23,9 @@ export function IntelligenceLens() {
   return (
     <div className="space-y-7">
       <LensHeader
-        eyebrow="AI Briefs Lens"
+        eyebrow="AI Reports Lens"
         title="Every AI output has a provider trail"
-        subtitle="Read generated reports, inspect cache/provider metadata and keep Gemini usage visible. Nothing on this page calls Gemini."
+        subtitle="Read generated reports, inspect cache/provider metadata and keep OpenRouter usage visible. Nothing on this page calls OpenRouter."
         action={<SelectField value={reportType} onChange={(event) => setReportType(event.target.value)} options={reportTypes} />}
       />
       <div className="grid gap-6 xl:grid-cols-[1fr_320px]">

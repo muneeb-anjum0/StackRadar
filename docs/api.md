@@ -32,7 +32,7 @@ Quality observability routes:
 
 AI career intelligence routes:
 
-- `GET /ai/status` returns provider availability and Gemini configuration state.
+- `GET /ai/status` returns provider availability and OpenRouter configuration state.
 - `POST /ai/career-report` generates or reuses a grounded career report.
 - `POST /ai/learning-roadmap` generates or reuses a 4-week roadmap.
 - `POST /ai/project-suggestions` generates or reuses portfolio project ideas.
@@ -41,7 +41,7 @@ AI career intelligence routes:
 - `POST /ai/job-quality` explains dataset quality for a role.
 - `GET /ai/reports` returns latest generated reports.
 - `GET /ai/reports/{report_id}` returns one full report.
-- `GET /ai/usage` returns Mock/Gemini report counts and cooldown seconds.
+- `GET /ai/usage` returns Mock/OpenRouter report counts and cooldown seconds.
 
 AI requests use existing StackRadar analytics as structured context. API keys are never sent to the frontend.
 

@@ -3,10 +3,10 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
-AiProvider = Literal["mock", "gemini"]
+AiProvider = Literal["mock", "openrouter"]
 ReportType = Literal["career_report", "learning_roadmap", "role_fit", "project_suggestions", "skill_gap_brief", "job_quality"]
 
 
@@ -20,9 +20,10 @@ class AiReportRequest(BaseModel):
 class AiStatusOut(BaseModel):
     default_provider: AiProvider
     available_providers: list[AiProvider]
-    gemini_configured: bool
+    openrouter_configured: bool
     real_ai_enabled: bool
-    gemini_usage_note: str
+    openrouter_model: str
+    usage_note: str
 
 
 class AiReportOut(BaseModel):
@@ -30,7 +31,7 @@ class AiReportOut(BaseModel):
     report_type: ReportType
     target_role: str
     current_skills: list[str]
-    provider: AiProvider
+    provider: str
     model: str | None
     prompt_version: str
     input_snapshot: dict
@@ -39,9 +40,14 @@ class AiReportOut(BaseModel):
     reused_from_cache: bool
     token_budget_hint: int
 
+    @field_validator("provider", mode="before")
+    @classmethod
+    def map_legacy_provider(cls, value: object) -> object:
+        return "legacy" if value == "gemini" else value
+
 
 class AiUsageOut(BaseModel):
-    gemini_reports_total: int
+    openrouter_reports_total: int
     mock_reports_total: int
-    latest_gemini_report_at: datetime | None
+    latest_openrouter_report_at: datetime | None
     cooldown_seconds: int

@@ -124,15 +124,16 @@ export type SkillGap = {
   summary: string;
 };
 
-export type AiProvider = "mock" | "gemini";
+export type AiProvider = "mock" | "openrouter";
 export type ReportType = "career_report" | "learning_roadmap" | "role_fit" | "project_suggestions" | "skill_gap_brief" | "job_quality";
 
 export type AiStatus = {
   default_provider: AiProvider;
   available_providers: AiProvider[];
-  gemini_configured: boolean;
+  openrouter_configured: boolean;
   real_ai_enabled: boolean;
-  gemini_usage_note: string;
+  openrouter_model: string;
+  usage_note: string;
 };
 
 export type AiReport = {
@@ -140,7 +141,7 @@ export type AiReport = {
   report_type: ReportType;
   target_role: string;
   current_skills: string[];
-  provider: AiProvider;
+  provider: AiProvider | "legacy";
   model: string | null;
   prompt_version: string;
   input_snapshot: Record<string, unknown>;
@@ -158,8 +159,8 @@ export type AiReportRequest = {
 };
 
 export type AiUsage = {
-  gemini_reports_total: number;
+  openrouter_reports_total: number;
   mock_reports_total: number;
-  latest_gemini_report_at: string | null;
+  latest_openrouter_report_at: string | null;
   cooldown_seconds: number;
 };

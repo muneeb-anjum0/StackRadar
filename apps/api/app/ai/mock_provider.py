@@ -29,14 +29,18 @@ class MockProvider(BaseAiProvider):
                 f"Week 2\nConnect {missing_line} to a practical service or analysis workflow.\n\n"
                 f"Week 3\nTurn the work into a portfolio-ready project using the strongest observed role skills: {top_line}.\n\n"
                 "Week 4\nPolish the README, add screenshots, write tradeoffs, and map every feature to a job requirement.\n\n"
+                f"End-of-roadmap deliverable\nA role-shaped project that proves {next_line} and references the observed top skills: {top_line}.\n\n"
                 "Dataset limitation note\nThis is guidance from the local StackRadar dataset, not a claim about the full global market."
             )
         elif report_type == "project_suggestions":
             body = (
                 f"Snapshot\nBased on the current StackRadar dataset, the strongest {role} skill signals are {top_line}.\n\n"
-                f"Project 1\nBuild a focused API or analytics service that demonstrates {next_line}.\n\n"
-                f"Project 2\nCreate a data-backed dashboard that uses {missing_line} in a realistic workflow.\n\n"
-                "Project 3\nPackage a production-style local app with tests, Docker, and a clear architecture note.\n\n"
+                f"Best project\nBuild a Dockerized role-intelligence service that demonstrates {next_line} against realistic job-market data.\n\n"
+                f"Why it fits the role\nIt directly closes the visible gaps: {missing_line}.\n\n"
+                "Required features\nAdd a REST API, persistence, filtering, validation, tests, and a small documented workflow.\n\n"
+                f"Stack\nUse the technologies you already know, then layer in the highest-value missing skills: {missing_line}.\n\n"
+                "What to show in README\nShow architecture, setup, screenshots, API examples, tradeoffs, and which job requirements each feature proves.\n\n"
+                f"Recruiter-facing bullet\nBuilt a production-style {role} project that proves {next_line} using evidence from StackRadar role-skill demand.\n\n"
                 "Dataset limitation note\nUse these as portfolio bets from current StackRadar evidence, not universal hiring truth."
             )
         elif report_type == "role_fit":
@@ -64,9 +68,9 @@ class MockProvider(BaseAiProvider):
         else:
             body = (
                 f"Snapshot\nBased on the current StackRadar dataset, {role} has {role_count} clean postings. Top skills: {top_line}.\n\n"
-                f"Your current fit\nYou match {matched_line}.\n\n"
+                f"Fit score interpretation\nYour current match is {context.get('match_percentage', 0)}%. You match {matched_line}.\n\n"
                 f"Missing high-value skills\nFocus on {missing_line}.\n\n"
-                f"Next best moves\nLearn {next_line}, build one practical project, and update your portfolio with evidence.\n\n"
+                f"Next 3 moves\n1. Learn {next_line} through a focused mini-build.\n2. Turn it into one complete portfolio project.\n3. Update your README and resume bullets with measurable proof.\n\n"
                 "Dataset limitation note\nThis report uses local StackRadar analytics and does not claim to represent the whole market."
             )
 

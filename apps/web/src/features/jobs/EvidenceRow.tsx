@@ -8,8 +8,8 @@ export function EvidenceRow({ job, selected, onSelect }: { job: Job; selected: b
   return (
     <button
       onClick={() => onSelect(job)}
-      className={`grid w-full gap-4 rounded-2xl border p-4 text-left md:grid-cols-[1fr_190px] ${
-        selected ? "border-[#3a404a] bg-[#151a20]" : "border-[#252b34] bg-[#090b0e] hover:border-[#343b46] hover:bg-[#101318]"
+      className={`grid w-full gap-4 rounded-[1.15rem] border p-4 text-left md:grid-cols-[1fr_190px] ${
+        selected ? "border-cyan-200/30 bg-[#1c1c1c]" : "border-white/[0.08] bg-[#151515] hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[#181818]"
       }`}
     >
       <div className="min-w-0">
@@ -19,13 +19,13 @@ export function EvidenceRow({ job, selected, onSelect }: { job: Job; selected: b
           <SignalBadge>{job.source}</SignalBadge>
           <SignalBadge>{job.work_mode}</SignalBadge>
         </div>
-        <h3 className="mt-3 truncate text-base font-semibold text-slate-100">{job.raw_title ?? job.normalized_title}</h3>
-        <p className="mt-1 text-sm text-slate-400">Normalized as {job.normalized_role} / {job.company ?? "Unknown company"} / {[job.city, job.country].filter(Boolean).join(", ") || "Unknown location"}</p>
-        <p className="mt-2 text-xs text-slate-500">Collected {shortDate(job.collected_at)}</p>
+        <h3 className="mt-3 truncate text-base font-semibold text-neutral-100">{job.raw_title ?? job.normalized_title}</h3>
+        <p className="mt-1 text-sm text-neutral-400">Normalized as {job.normalized_role} / {job.company ?? "Unknown company"} / {[job.city, job.country].filter(Boolean).join(", ") || "Unknown location"}</p>
+        <p className="mt-2 text-xs text-neutral-500">Collected {shortDate(job.collected_at)}</p>
       </div>
       <div className="md:text-right">
-        <p className="text-sm font-semibold text-slate-100">{salary(job.salary_min, job.salary_max, job.currency)}</p>
-        <p className="mt-2 text-xs text-slate-500">{job.skills.slice(0, 4).map((skill) => skill.name).join(" / ") || "No skills extracted"}</p>
+        <p className="text-sm font-semibold text-neutral-100">{salary(job.salary_min, job.salary_max, job.currency)}</p>
+        <p className="mt-2 text-xs text-neutral-500">{job.skills.slice(0, 4).map((skill) => skill.name).join(" / ") || "No skills extracted"}</p>
       </div>
     </button>
   );

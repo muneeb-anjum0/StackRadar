@@ -7,6 +7,7 @@ import { SkillConstellation } from "../../components/visuals/SkillConstellation"
 import { useSkillData } from "../../hooks/useSkillData";
 import { FeaturedSkill } from "./FeaturedSkill";
 import { SkillRankList } from "./SkillRankList";
+import { SectionHeader } from "../../components/ui/SectionHeader";
 
 export function SkillLens() {
   const [query, setQuery] = useState("");
@@ -24,17 +25,11 @@ export function SkillLens() {
       <FeaturedSkill skill={featured} />
       <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
         <Surface level={2} className="p-5">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold text-slate-100">Skill demand ranking</h2>
-            <span className="text-xs text-slate-500">{filtered.length} skills</span>
-          </div>
+          <SectionHeader eyebrow="Animated demand stack" title="Skill demand ranking" action={<span className="text-xs text-neutral-500">{filtered.length} skills</span>} />
           <SkillRankList items={filtered} />
         </Surface>
         <Surface level={2} className="p-5">
-          <div className="mb-5">
-            <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Decision strip</p>
-            <h2 className="mt-2 text-xl font-semibold text-slate-100">Portfolio signals to act on</h2>
-          </div>
+          <SectionHeader eyebrow="Decision strip" title="Portfolio signals to act on" />
           <div className="grid gap-3 sm:grid-cols-2">
             <DecisionFact label="Best frontend signal" value={findCategory(categories, "frontend") ?? featured?.name ?? "N/A"} />
             <DecisionFact label="Best backend signal" value={findCategory(categories, "backend") ?? "N/A"} />
@@ -44,11 +39,11 @@ export function SkillLens() {
         </Surface>
       </div>
       <Surface level={3} className="p-6">
-        <div className="mb-5">
-          <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Skill groups</p>
-          <h2 className="mt-2 text-2xl font-semibold text-slate-100">Demand by category</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">Skill groups show whether demand is frontend-heavy, backend-heavy, data-heavy, cloud-heavy or tool-heavy.</p>
-        </div>
+        <SectionHeader
+          eyebrow="Skill groups"
+          title="Demand by category"
+          description="Skill groups show whether demand is frontend-heavy, backend-heavy, data-heavy, cloud-heavy or tool-heavy."
+        />
         <SkillConstellation groups={categories} />
       </Surface>
     </div>
@@ -61,9 +56,9 @@ function findCategory(categories: { category: string; items: { name: string }[] 
 
 function DecisionFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
-      <p className="text-xs text-slate-500">{label}</p>
-      <p className="mt-2 font-semibold text-slate-100">{value}</p>
+    <div className="rounded-2xl border border-white/[0.08] bg-[#111111] p-4 hover:-translate-y-0.5 hover:border-white/[0.14]">
+      <p className="text-xs text-neutral-500">{label}</p>
+      <p className="mt-2 font-semibold text-neutral-100">{value}</p>
     </div>
   );
 }

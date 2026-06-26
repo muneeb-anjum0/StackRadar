@@ -8,6 +8,7 @@ import { CountItem, Job, JobResponse, SourceSummary } from "../../types/api";
 import { EvidenceRow } from "./EvidenceRow";
 import { FilterRibbon } from "./FilterRibbon";
 import { JobPreview } from "./JobPreview";
+import { AnimatedList, AnimatedListItem } from "../../components/reactbits/AnimatedList/AnimatedList";
 
 export function JobsLens() {
   const [filters, setFilters] = useState({
@@ -57,11 +58,15 @@ export function JobsLens() {
         onReset={() => setFilters({ query: "", role: "", skill: "", workMode: "", seniority: "", source: "", salaryAvailable: false, hasSkills: false, hideNonTechnical: true, showLowConfidence: false })}
       />
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
-        <div className="space-y-3">
+        <AnimatedList className="space-y-3">
           {jobs.isLoading && <LoadingPanel label="Loading evidence rows" />}
           {!jobs.isLoading && !visibleJobs.length && <EmptyPanel title="No jobs match these filters." />}
-          {visibleJobs.map((job) => <EvidenceRow key={job.id} job={job} selected={selected?.id === job.id} onSelect={setSelected} />)}
-        </div>
+          {visibleJobs.map((job) => (
+            <AnimatedListItem key={job.id}>
+              <EvidenceRow job={job} selected={selected?.id === job.id} onSelect={setSelected} />
+            </AnimatedListItem>
+          ))}
+        </AnimatedList>
         <JobPreview job={selected ?? visibleJobs[0]} />
       </div>
     </div>

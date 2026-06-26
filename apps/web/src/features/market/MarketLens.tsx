@@ -6,6 +6,8 @@ import { useMarketData } from "../../hooks/useMarketData";
 import { MarketThesis } from "./MarketThesis";
 import { MarketSignalBoard } from "./MarketSignalBoard";
 import { SourceLedger } from "./SourceLedger";
+import { MetricTile } from "../../components/ui/MetricTile";
+import { SectionHeader } from "../../components/ui/SectionHeader";
 
 const scopes = ["Software only", "All roles", "Data/AI", "Backend", "Frontend", "Remote only", "Junior friendly"];
 const roleTerms: Record<string, string[]> = {
@@ -49,14 +51,18 @@ export function MarketLens() {
         ))}
       </div>
       <MarketThesis data={data} />
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <MetricTile label="Top role signal" value={data.most_common_role ?? "Unknown"} detail="Highest role cluster in clean postings" tone="violet" />
+        <MetricTile label="Top skill signal" value={data.most_demanded_skill ?? "Unknown"} detail="Most repeated skill in evidence" tone="cyan" />
+        <MetricTile label="Remote share" value={`${data.remote_job_percentage}%`} detail="Access signal across work modes" tone="green" />
+        <MetricTile label="Average salary" value={data.average_salary ? `$${Math.round(data.average_salary).toLocaleString()}` : "N/A"} detail="Only where salary is visible" tone="neutral" />
+      </div>
       <Surface level={3} className="p-6">
-        <div className="mb-5 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Market Signal Board</p>
-            <h2 className="mt-2 text-2xl font-semibold text-slate-100">What the current job market is asking for</h2>
-          </div>
-          <p className="hidden max-w-sm text-right text-sm leading-6 text-slate-400 md:block">Read role demand, skill demand, access and trust as connected lanes, not isolated cards.</p>
-        </div>
+        <SectionHeader
+          eyebrow="Market signal board"
+          title="What the current job market is asking for"
+          description="Read role demand, skill demand, access and trust as connected lanes, not isolated cards."
+        />
         <MarketSignalBoard roles={scopedRoles} skills={skills.data ?? []} modes={modes.data ?? []} overview={data} />
       </Surface>
       <SourceLedger sources={sources.data} />

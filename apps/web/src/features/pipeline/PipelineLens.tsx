@@ -6,6 +6,7 @@ import { usePipelineData } from "../../hooks/usePipelineData";
 import { RunTimeline } from "./RunTimeline";
 import { SourceHealthLedger } from "./SourceHealthLedger";
 import { ValidationStack } from "./ValidationStack";
+import { GlowPanel } from "../../components/ui/GlowPanel";
 
 export function PipelineLens() {
   const { summary, issues, sources, pipelineRuns, sourceHealth, validations } = usePipelineData();
@@ -22,20 +23,22 @@ export function PipelineLens() {
         subtitle="Check whether the data behind the insights is fresh, clean and trustworthy."
       />
       {data && (
-        <Surface level={3} className="p-7">
-          <div className="grid gap-6 lg:grid-cols-[280px_1fr] lg:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Trust signal</p>
-              <p className="mt-4 text-7xl font-semibold leading-none text-slate-50">{data.quality_score}%</p>
-              <ProgressLine value={data.quality_score} className="mt-6" />
-            </div>
-            <div className="grid gap-3 md:grid-cols-3">
-              <TrustFact label="Is it fresh?" value={data.run_at ? new Date(data.run_at).toLocaleString() : "No run yet"} />
-              <TrustFact label="Is it clean?" value={`${data.total_clean_jobs} usable after cleaning`} />
-              <TrustFact label="Do not fully trust yet" value={`${data.noisy_classification_count ?? 0} noisy classifications`} />
+        <GlowPanel tone="green">
+          <div className="p-7">
+            <div className="grid gap-6 lg:grid-cols-[280px_1fr] lg:items-end">
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-neutral-500">Trust signal</p>
+                <p className="mt-4 text-7xl font-semibold leading-none text-neutral-50">{data.quality_score}%</p>
+                <ProgressLine value={data.quality_score} className="mt-6" />
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                <TrustFact label="Is it fresh?" value={data.run_at ? new Date(data.run_at).toLocaleString() : "No run yet"} />
+                <TrustFact label="Is it clean?" value={`${data.total_clean_jobs} usable after cleaning`} />
+                <TrustFact label="Do not fully trust yet" value={`${data.noisy_classification_count ?? 0} noisy classifications`} />
+              </div>
             </div>
           </div>
-        </Surface>
+        </GlowPanel>
       )}
       <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
         <Surface level={2} className="p-5">
@@ -70,9 +73,9 @@ export function PipelineLens() {
 
 function TrustFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-[#20242b] bg-[#07090b] p-4">
-      <p className="text-xs text-slate-500">{label}</p>
-      <p className="mt-1 text-xl font-semibold text-slate-100">{value}</p>
+    <div className="rounded-2xl border border-white/[0.08] bg-[#111111] p-4">
+      <p className="text-xs text-neutral-500">{label}</p>
+      <p className="mt-1 text-xl font-semibold text-neutral-100">{value}</p>
     </div>
   );
 }

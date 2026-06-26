@@ -3,9 +3,9 @@ import { SignalBadge } from "../../components/primitives/SignalBadge";
 
 export function ReportReader({ report }: { report: AiReport | null }) {
   return (
-    <div className="min-h-[520px] rounded-[1.5rem] border border-[#242933] bg-[#0d1014] p-7">
+    <div className="min-h-[520px] rounded-[1.5rem] border border-white/[0.1] bg-[#181818] p-7">
       {!report ? (
-        <p className="text-sm text-slate-400">Select a report to read it here.</p>
+        <p className="text-sm text-neutral-400">Select a report to read it here.</p>
       ) : (
         <>
           <div className="flex flex-wrap gap-2">
@@ -14,9 +14,9 @@ export function ReportReader({ report }: { report: AiReport | null }) {
             <SignalBadge>Source data: StackRadar analytics</SignalBadge>
             <SignalBadge tone={report.reused_from_cache ? "good" : "neutral"}>Cached: {report.reused_from_cache ? "Yes" : "No"}</SignalBadge>
           </div>
-          <h2 className="mt-6 text-3xl font-semibold capitalize text-slate-100">{report.report_type.replace(/_/g, " ")}</h2>
-          <p className="mt-2 text-sm text-slate-500">{report.target_role} / {new Date(report.created_at).toLocaleString()} / model {report.model ?? "local"}</p>
-          <pre className="mt-6 whitespace-pre-wrap text-sm leading-7 text-slate-300">{report.output_text}</pre>
+          <h2 className="mt-6 text-3xl font-semibold capitalize text-neutral-100">{report.report_type.replace(/_/g, " ")}</h2>
+          <p className="mt-2 text-sm text-neutral-500">{report.target_role} / {new Date(report.created_at).toLocaleString()} / model {report.model ?? "local"}</p>
+          <pre className="mt-6 whitespace-pre-wrap text-sm leading-7 text-neutral-300">{report.output_text}</pre>
         </>
       )}
     </div>
